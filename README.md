@@ -1,4 +1,5 @@
-# .github
-Default metadata files for repos in this org.
+# Matrix Files SDK
 
-If you're seeing this readme in your project, your project is configured wrong.
+Provides a file system like abstraction around MSC3089.
+
+Targets LTS versions of Node.js (currently >=12) and browsers.
