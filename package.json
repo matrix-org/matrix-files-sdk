@@ -1,6 +1,6 @@
 {
   "name": "matrix-files-sdk",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "JS/TS SDK for working with files and folders in Matrix",
   "author": "The Matrix.org Foundation C.I.C.",
   "license": "Apache-2.0",
