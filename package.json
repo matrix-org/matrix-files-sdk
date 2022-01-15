@@ -30,7 +30,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "events": "^3.3.0",
-    "matrix-encrypt-attachment": "file:../matrix-encrypt-attachment",
+    "matrix-encrypt-attachment": "https://registry.npmjs.org/matrix-encrypt-attachment/-/matrix-encrypt-attachment-1.0.1.tgz",
     "p-retry": "^4.5.0"
   },
   "devDependencies": {
