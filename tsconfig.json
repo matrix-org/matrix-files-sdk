@@ -14,7 +14,6 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "forceConsistentCasingInFileNames": true,
-        "allowJs": true,
         "outDir": "./dist",
         "rootDir": "./src"
     }
