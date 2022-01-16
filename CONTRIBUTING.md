@@ -1,4 +1,4 @@
-# Contributing code to matrix-drive-sdk
+# Contributing code to matrix-files-sdk
 
 Everyone is welcome to contribute code to this project, provided that they are
 willing to license their contributions under the same license as the project
