@@ -15,6 +15,15 @@
   "bugs": {
     "url": "https://github.com/matrix-org/matrix-files-sdk/issues"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "package.json",
+    "yarn.lock",
+    "LICENSE"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "prepublishOnly": "yarn build",
