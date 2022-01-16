@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.1...v1.0.2) (2022-01-16)
+
+
+### Bug Fixes
+
+* reduce npm package size and exclude source/build files ([69577a4](https://github.com/matrix-org/matrix-files-sdk/commit/69577a428eae33ec430273b7e0519674b8ac426e))
+
 ## [1.0.1](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.0...v1.0.1) (2022-01-15)
 
 
