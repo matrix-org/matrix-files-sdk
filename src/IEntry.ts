@@ -21,7 +21,7 @@ export type MatrixFilesID = string;
 
 export interface IEntry extends EventEmitter {
     id: MatrixFilesID;
-    getParent(): IEntry | undefined;
+    getParent(): IFolderEntry | undefined;
     /**
      * All parts of the path including the name
      */
