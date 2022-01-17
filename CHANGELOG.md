@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.3...v1.1.0) (2022-01-17)
+
+
+### Features
+
+* return raw mimetype and rely on SDK consumer to take care of any XSS issues ([2d9ab63](https://github.com/matrix-org/matrix-files-sdk/commit/2d9ab6387f2abf9ff88c77cbd867c95ffc7feb4a))
+
 ## [1.0.3](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.2...v1.0.3) (2022-01-17)
 
 
