@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.2...v1.0.3) (2022-01-17)
+
+
+### Bug Fixes
+
+* correct return type of IEntry.getParent() ([48e282a](https://github.com/matrix-org/matrix-files-sdk/commit/48e282a4ce83fbbb2bcef892e07caf8522986e43))
+
 ## [1.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.1...v1.0.2) (2022-01-16)
 
 
