@@ -139,9 +139,11 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         const response = await axios.get<ArrayBuffer>(file.httpUrl, { responseType: 'arraybuffer' });
         const data = await decryptAttachment(response.data, file.info);
 
+        const { info } = (await this.branch.getFileEvent()).getOriginalContent();
+
         return {
             data,
-            mimetype: file.info.mimetype ?? 'application/octet-stream',
+            mimetype: info?.mimetype ?? 'application/octet-stream',
             size: data.byteLength,
         };
     }
