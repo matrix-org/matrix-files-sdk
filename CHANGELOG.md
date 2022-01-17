@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.2...v1.1.3) (2022-01-17)
+
+
+### Bug Fixes
+
+* use release version of matrix-js-sdk instead of rc ([0345dbf](https://github.com/matrix-org/matrix-files-sdk/commit/0345dbf0fbfb1903a0d8cdec0dbb6fdd6757c2b8))
+
 ## [1.1.2](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.1...v1.1.2) (2022-01-17)
 
 
