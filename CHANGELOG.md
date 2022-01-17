@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.0...v1.1.1) (2022-01-17)
+
+
+### Bug Fixes
+
+* export ArrayBufferBlob type ([7bbbac2](https://github.com/matrix-org/matrix-files-sdk/commit/7bbbac2cfd2a0847def628552cb6b897e429a413))
+
 # [1.1.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.0.3...v1.1.0) (2022-01-17)
 
 
