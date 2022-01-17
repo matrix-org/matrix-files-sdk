@@ -18,11 +18,12 @@ import { EventType, UNSTABLE_MSC3089_BRANCH } from 'matrix-js-sdk/lib/@types/eve
 import type { MSC3089TreeSpace } from 'matrix-js-sdk/lib/models/MSC3089TreeSpace';
 import type { MatrixEvent, Room, RoomMember, RoomState } from 'matrix-js-sdk/lib';
 import { encryptAttachment } from 'matrix-encrypt-attachment';
-import { IFolderEntry, IFileEntry, IEntry, MatrixFiles, FolderRole, MatrixFilesID } from '.';
+import {
+    IFolderEntry, IFileEntry, IEntry, MatrixFiles, FolderRole,
+    MatrixFilesID, IFolderMembership, ArrayBufferBlob,
+} from '.';
 import { BranchEntry } from './BranchEntry';
 import { AbstractFolderEntry } from './AbstractFolderEntry';
-import { ArrayBufferBlob } from './utils';
-import { IFolderMembership } from './IFolderMembership';
 import { TreeSpaceMembership } from './TreeSpaceMembership';
 
 export class TreeSpaceEntry extends AbstractFolderEntry {

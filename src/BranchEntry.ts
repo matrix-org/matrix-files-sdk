@@ -18,7 +18,7 @@ import type { MSC3089Branch } from 'matrix-js-sdk/lib/models/MSC3089Branch';
 import type { MatrixEvent, Room } from 'matrix-js-sdk/lib';
 import { encryptAttachment, decryptAttachment } from 'matrix-encrypt-attachment';
 import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, MatrixFiles } from '.';
-import { ArrayBufferBlob } from './utils';
+import { ArrayBufferBlob } from './ArrayBufferBlob';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
 

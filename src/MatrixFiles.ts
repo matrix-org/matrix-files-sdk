@@ -19,12 +19,10 @@ import { PendingEventOrdering } from 'matrix-js-sdk/lib/client';
 import { simpleRetryOperation } from 'matrix-js-sdk/lib/utils';
 import { EventType, UNSTABLE_MSC3089_TREE_SUBTYPE } from 'matrix-js-sdk/lib/@types/event';
 import { SyncState } from 'matrix-js-sdk/lib/sync';
-import type { IFolderEntry, IEntry, FolderRole, MatrixFilesID } from '.';
+import type { IFolderEntry, IEntry, FolderRole, MatrixFilesID, ArrayBufferBlob, IFolderMembership } from '.';
 import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceEntry } from './TreeSpaceEntry';
-import { ArrayBufferBlob } from './utils';
 import promiseRetry from 'p-retry';
-import { IFolderMembership } from './IFolderMembership';
 
 export class MatrixFiles extends AbstractFolderEntry {
     constructor(public client: MatrixClient) {

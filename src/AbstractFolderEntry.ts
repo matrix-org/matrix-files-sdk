@@ -18,7 +18,7 @@ import type { MatrixClient } from 'matrix-js-sdk/lib';
 import type { IFolderEntry, IEntry, FolderRole, MatrixFilesID } from '.';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import { IFolderMembership } from './IFolderMembership';
-import { ArrayBufferBlob } from './utils';
+import { ArrayBufferBlob } from './ArrayBufferBlob';
 
 export abstract class AbstractFolderEntry extends AutoBindingEmitter implements IFolderEntry {
     constructor(client: MatrixClient, private parent: IFolderEntry | undefined) {

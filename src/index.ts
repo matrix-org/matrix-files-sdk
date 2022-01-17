@@ -23,3 +23,4 @@ export * from './IFolderMembership';
 export * from './MatrixFiles';
 export * from './TreeSpaceEntry';
 export * from './BranchEntry';
+export * from './ArrayBufferBlob';

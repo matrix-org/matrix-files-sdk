@@ -15,8 +15,7 @@ limitations under the License.
 */
 
 import EventEmitter from 'events';
-import type { IEntry } from '.';
-import { ArrayBufferBlob } from './utils';
+import type { IEntry, ArrayBufferBlob } from '.';
 
 export type FileEncryptionStatus =
 'encryptionNotEnabled' |

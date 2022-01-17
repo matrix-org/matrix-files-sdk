@@ -15,9 +15,7 @@ limitations under the License.
 */
 
 import EventEmitter from 'events';
-import type { IEntry, FolderRole, MatrixFilesID } from '.';
-import { IFolderMembership } from './IFolderMembership';
-import { ArrayBufferBlob } from './utils';
+import type { IEntry, FolderRole, MatrixFilesID, ArrayBufferBlob, IFolderMembership } from '.';
 
 export interface IFolderEntry extends IEntry, EventEmitter {
     getChildren(): Promise<IEntry[]>;
