@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.1...v1.1.2) (2022-01-17)
+
+
+### Bug Fixes
+
+* actually return the stored mimetype in getBlob() ([417edb8](https://github.com/matrix-org/matrix-files-sdk/commit/417edb8fd63ecfb203183b1c0784ed1e471eb608))
+
 ## [1.1.1](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.0...v1.1.1) (2022-01-17)
 
 
