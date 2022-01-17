@@ -18,7 +18,7 @@ import type { MSC3089Branch } from 'matrix-js-sdk/lib/models/MSC3089Branch';
 import type { MatrixEvent, Room } from 'matrix-js-sdk/lib';
 import { encryptAttachment, decryptAttachment } from 'matrix-encrypt-attachment';
 import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, MatrixFiles } from '.';
-import { ArrayBufferBlob, getBlobSafeMimeType } from './utils';
+import { ArrayBufferBlob } from './utils';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
 
@@ -139,13 +139,9 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         const response = await axios.get<ArrayBuffer>(file.httpUrl, { responseType: 'arraybuffer' });
         const data = await decryptAttachment(response.data, file.info);
 
-        // IMPORTANT: We disable XSS attacks with this. See getBlobSafeMimeType().
-        let mimetype = file.info.mimetype ? file.info.mimetype.split(';')[0].trim() : '';
-        mimetype = getBlobSafeMimeType(mimetype);
-
         return {
             data,
-            mimetype,
+            mimetype: file.info.mimetype ?? 'application/octet-stream',
             size: data.byteLength,
         };
     }
