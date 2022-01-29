@@ -55,7 +55,7 @@
     "eslint-plugin-matrix-org": "github:matrix-org/eslint-plugin-matrix-org",
     "husky": "^7.0.4",
     "matrix-js-sdk": "^15.4.0",
-    "semantic-release": "^18.0.1",
+    "semantic-release": "^19.0.2",
     "typescript": "^4.4.4"
   },
   "peerDependencies": {
