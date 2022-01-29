@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.3...v1.1.4) (2022-01-29)
+
+
+### Bug Fixes
+
+* **deps:** revert workaround for matrix-encrypt-attachment not working from npmjs ([2a5b3ef](https://github.com/matrix-org/matrix-files-sdk/commit/2a5b3ef2fa410325a5311e639b3b717a49bdfed2))
+
 ## [1.1.3](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.2...v1.1.3) (2022-01-17)
 
 
