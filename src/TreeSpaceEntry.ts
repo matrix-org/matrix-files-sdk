@@ -97,6 +97,12 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
+        // simple rename?
+        if (resolvedParent.id === this.getParent()?.id) {
+            await this.rename(fileName);
+            return this.id;
+        }
+
         // TODO: Implement this
         throw new Error('Not implemented');
     }

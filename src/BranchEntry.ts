@@ -109,6 +109,12 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
+        // simple rename?
+        if (resolvedParent.id === this.getParent().id) {
+            await this.rename(fileName);
+            return this.id;
+        }
+
         const newFile = await this.copyTo(resolvedParent, fileName);
         await this.delete();
         return newFile;
