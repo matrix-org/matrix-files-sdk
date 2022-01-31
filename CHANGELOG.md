@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.4...v1.2.0) (2022-01-31)
+
+
+### Features
+
+* optimise moveTo() to rename() where possible ([6f48822](https://github.com/matrix-org/matrix-files-sdk/commit/6f48822265bece993e870b30390c857be949e7c9))
+
 ## [1.1.4](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.3...v1.1.4) (2022-01-29)
 
 
