@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import EventEmitter from 'events';
-import { FolderRole } from '.';
+import type EventEmitter from 'events';
+import type { FolderRole } from '.';
 
 /**
  * Represents the membership of a folder. This is an abstraction on top of Matrix room membership.
