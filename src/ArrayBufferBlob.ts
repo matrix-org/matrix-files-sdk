@@ -14,8 +14,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+/**
+ * Represents a file stored on a Matrix media repository.
+ */
 export interface ArrayBufferBlob {
+    /**
+     * The content of the file in binary form.
+     */
     data: ArrayBuffer;
+
+    /**
+     * The size of the file in bytes.
+     */
     size: number;
+
+    /**
+     * The mimetype that was given when the file was stored.
+     */
     mimetype: string;
 }

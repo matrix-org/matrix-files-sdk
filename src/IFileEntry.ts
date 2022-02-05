@@ -17,6 +17,9 @@ limitations under the License.
 import EventEmitter from 'events';
 import type { IEntry, ArrayBufferBlob } from '.';
 
+/**
+ * Helper enum to represent the encryption status of the file.
+ */
 export type FileEncryptionStatus =
 'encryptionNotEnabled' |
 'encrypted' |
@@ -24,14 +27,62 @@ export type FileEncryptionStatus =
 'decrypted' |
 'decryptionFailed';
 
+/**
+ * Represents a file stored in the Matrix Files SDK hierarchy.
+ */
 export interface IFileEntry extends IEntry, EventEmitter {
+    /**
+     * The revision number of this file. Revisions start at `1` and increment.
+     */
     version: number;
+
+    /**
+     * Copy this file as a new version on another file.
+     *
+     * @param fileTo The entry to add a version to.
+     */
+
     copyAsVersion(fileTo: IFileEntry): Promise<void>;
+
+    /**
+     * Add a new version/revision to this file.
+     *
+     * @param file The contents of the new version.
+     * @param newName The new name for the file, or `undefined` if no change.
+     */
     addVersion(file: ArrayBufferBlob, newName?: string): Promise<void>;
+
+    /**
+     * @returns The contents of the file in binary form.
+     */
     getBlob(): Promise<ArrayBufferBlob>;
+
+    /**
+     * @returns The size of this file in bytes.
+     */
     getSize(): Promise<number>;
+
+    /**
+     * @returns The current lock disposition for this file.
+     */
     isLocked(): boolean;
+
+    /**
+     * Set the lock status of this file.
+     *
+     * @param locked The lock status to set.
+     */
     setLocked(locked: boolean): Promise<void>;
+
+    /**
+     * Get versions of this file.
+     *
+     * @returns Array of versions including this version.
+     */
     getVersionHistory(): Promise<IFileEntry[]>;
+
+    /**
+     * @returns The disposition of this file with regards to Matrix end-to-end encryption.
+     */
     getEncryptionStatus(): FileEncryptionStatus;
 }

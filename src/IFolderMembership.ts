@@ -17,11 +17,37 @@ limitations under the License.
 import EventEmitter from 'events';
 import { FolderRole } from '.';
 
+/**
+ * Represents the membership of a folder. This is an abstraction on top of Matrix room membership.
+ */
 export interface IFolderMembership extends EventEmitter {
+    /**
+     * The Matrix user ID for this member.
+     */
     userId: string;
+
+    /**
+     * The MSC3089 role of this member.
+     */
     role: FolderRole;
+
+    /**
+     * The date/time that the member joined (or was invited?).
+     */
     since: Date;
+
+    /**
+     * `true` if the member has power to invite other members to the folder.
+     */
     canInvite: boolean;
+
+    /**
+     * `true` if the member has power to remove another member from the folder.
+     */
     canRemove: boolean;
+
+    /**
+     * `true` if the member has power to remove change the power of another member of the golder.
+     */
     canManageRoles: boolean;
 }

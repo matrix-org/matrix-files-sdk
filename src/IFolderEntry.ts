@@ -17,20 +17,96 @@ limitations under the License.
 import EventEmitter from 'events';
 import type { IEntry, FolderRole, MatrixFilesID, ArrayBufferBlob, IFolderMembership } from '.';
 
+/**
+ * Represents a file stored in the Matrix Files SDK hierarchy.
+ */
 export interface IFolderEntry extends IEntry, EventEmitter {
-    getChildren(): Promise<IEntry[]>;
-    getChildByName(name: string): Promise<IEntry | undefined>;
-    getChildById(id: MatrixFilesID): Promise<IEntry | undefined>;
-    getDescendentById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
-    addFolder(name: string | string[]): Promise<MatrixFilesID>;
-    addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID>;
-    getMembers(): IFolderMembership[];
-    getMembership(userId: string): IFolderMembership;
     /**
-     * n.b. The user will be invited recursively to all sub-folders.
+     * @returns The immediate descendants of this folder.
+     */
+    getChildren(): Promise<IEntry[]>;
+
+    /**
+     * Find an immediate descendant entry by name.
+     *
+     * @param name The name of the child to locate.
+     * @returns The entry if found, otherwise `undefined`.
+     */
+    getChildByName(name: string): Promise<IEntry | undefined>;
+
+    /**
+     * Find an immediate descendant entry by {@link MatrixFilesID}`.
+     *
+     * @param name The ID of the child to locate.
+     * @returns The entry if found, otherwise `undefined`.
+     */
+    getChildById(id: MatrixFilesID): Promise<IEntry | undefined>;
+
+    /**
+     * Find a descendant entry by {@link MatrixFilesID}`.
+     *
+     * @param name The ID of the descendant to locate.
+     * @returns The entry if found, otherwise `undefined`.
+     */
+    getDescendentById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
+
+    /**
+     * Add a (sub) folder to this folder.
+     *
+     * @param name Name of the sub folder to add.
+     * @returns The ID of the new folder.
+     */
+    addFolder(name: string | string[]): Promise<MatrixFilesID>;
+
+    /**
+     * Add a file  to this folder.
+     *
+     * @param name Name of the file to add.
+     * @param file The file contents to add.
+     * @returns The ID of the new folder.
+     */
+    addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID>;
+
+    /**
+     * @returns Array of current members of the folder.
+     */
+    getMembers(): IFolderMembership[];
+
+    /**
+     * Get the membership for a user ID. Throws an exception if the user is not a member.
+     *
+     * @param userId The user ID of the member to return.
+     * @returns The membership representation for the user.
+     */
+    getMembership(userId: string): IFolderMembership;
+
+    /**
+     * Invite another user to access this folder. The user will be invited recursively to all sub-folders.
+     *
+     * @param userId The Matrix user ID to be invited.
+     * @param role The role for the new member.
+     * @returns The membership representation of the newly invited user.
      */
     inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership>;
+
+    /**
+     * Change the role/power level of an existing member.
+     *
+     * @param userId The Matrix user ID of the member.
+     * @param role  The new role for the member.
+     * @returns The updated membership representation
+     */
     setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership>;
+
+    /**
+     * Remove an existing member from a folder.
+     *
+     * @param userId The Matrix user ID of the member to remove.
+     */
     removeMember(userId: string): Promise<void>;
+
+    /**
+     *@returns The representation of the authenticated user on this folder.
+     */
     getOwnMembership(): IFolderMembership;
 }
