@@ -4,6 +4,7 @@
         "module": "commonjs",
         "lib": ["ES2021", "DOM"],
         "moduleResolution": "node",
+        "strict": true,
         "sourceMap": true,
         "declaration": true,
         "noImplicitAny": true,
