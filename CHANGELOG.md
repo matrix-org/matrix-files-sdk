@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.3.0...v1.4.0) (2022-02-05)
+
+
+### Features
+
+* add inline documentation for public Interface classes ([f160a27](https://github.com/matrix-org/matrix-files-sdk/commit/f160a273419133447433b99be3d3e78e1e9f9be2))
+
 # [1.3.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.2.0...v1.3.0) (2022-02-05)
 
 
