@@ -157,11 +157,11 @@ export class MatrixFiles extends AbstractFolderEntry {
         await this.client.deactivateAccount(undefined, erase);
     }
 
-    public async getPendingInvites(): Promise <Room[]> {
+    async getPendingInvites(): Promise <Room[]> {
         return this.client.getRooms().filter(r => r.getMyMembership() === 'invite');
     }
 
-    public async acceptInvite(invite: Room): Promise <void> {
+    async acceptInvite(invite: Room): Promise <void> {
         await this.client.joinRoom(invite.roomId);
     }
 
@@ -170,7 +170,7 @@ export class MatrixFiles extends AbstractFolderEntry {
      * multiple times. Joins will be re-tried forever, or until the runtime is interrupted.
      * @returns {Promise<void>} Resolves when complete.
      */
-    public async acceptAllInvites(): Promise <void> {
+    async acceptAllInvites(): Promise <void> {
         const invites = this.client.getRooms().filter(r => r.getMyMembership() === 'invite');
         return Promise.all(invites.map(async (r) => this.retryJoin(r))).then(); // .then() to coerce types
     }
