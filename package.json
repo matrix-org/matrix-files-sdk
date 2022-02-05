@@ -33,6 +33,7 @@
     "lint": "yarn lint:types && yarn lint:style",
     "lint:style": "eslint src",
     "lint:types": "tsc --noEmit --skipLibCheck",
+    "docs:class-diagram": "npx tsuml2 --glob './src/I*.ts' --propertyTypes false --modifiers false -o ./docs/class-diagram.svg",
     "test": "yarn lint",
     "release": "yarn semantic-release"
   },
