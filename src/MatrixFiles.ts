@@ -23,8 +23,9 @@ import type { IFolderEntry, IEntry, FolderRole, MatrixFilesID, ArrayBufferBlob, 
 import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceEntry } from './TreeSpaceEntry';
 import promiseRetry from 'p-retry';
+import { IMatrixFiles } from './IMatrixFiles';
 
-export class MatrixFiles extends AbstractFolderEntry {
+export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     constructor(public client: MatrixClient) {
         super(client, undefined);
         super.setEventHandlers({
