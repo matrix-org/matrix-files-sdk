@@ -144,7 +144,7 @@ export class MatrixFiles extends AbstractFolderEntry {
             };
             this.client.on('sync', fn.bind(this));
         });
-        return this.client.startClient(opts).then(() => readyPromise);
+        return this.client.startClient(opts).then(async () => readyPromise);
     }
 
     async logout(): Promise<void> {
@@ -172,11 +172,11 @@ export class MatrixFiles extends AbstractFolderEntry {
      */
     public async acceptAllInvites(): Promise <void> {
         const invites = this.client.getRooms().filter(r => r.getMyMembership() === 'invite');
-        return Promise.all(invites.map(r => this.retryJoin(r))).then(); // .then() to coerce types
+        return Promise.all(invites.map(async (r) => this.retryJoin(r))).then(); // .then() to coerce types
     }
 
-    private retryJoin(room: Room): Promise <Room> {
-        return simpleRetryOperation(() => {
+    private async retryJoin(room: Room): Promise <Room> {
+        return simpleRetryOperation(async () => {
             return this.client.joinRoom(room.roomId, {
                 viaServers: [this.client.getDomain()],
             }).catch(e => {
@@ -192,15 +192,15 @@ export class MatrixFiles extends AbstractFolderEntry {
         throw new Error('Function not available on root.');
     }
 
-    inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership> {
+    async inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership> {
         throw new Error('Function not available on root.');
     }
 
-    removeMember(userId: string): Promise<void> {
+    async removeMember(userId: string): Promise<void> {
         throw new Error('Function not available on root.');
     }
 
-    setMemberLevel(userId: string, role: FolderRole): Promise<IFolderMembership> {
+    async setMemberLevel(userId: string, role: FolderRole): Promise<IFolderMembership> {
         throw new Error('Function not available on root.');
     }
 
@@ -212,7 +212,7 @@ export class MatrixFiles extends AbstractFolderEntry {
         throw new Error('Function not available on root.');
     }
 
-    setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership> {
+    async setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership> {
         throw new Error('Function not available on root.');
     }
 
