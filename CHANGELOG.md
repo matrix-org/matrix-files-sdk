@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.2.0...v1.3.0) (2022-02-05)
+
+
+### Features
+
+* expose IMatrixFiles interface ([ad2a85e](https://github.com/matrix-org/matrix-files-sdk/commit/ad2a85e80cc479b86eba82d02441ed4d1b7f9d30))
+
 # [1.2.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.1.4...v1.2.0) (2022-01-31)
 
 
