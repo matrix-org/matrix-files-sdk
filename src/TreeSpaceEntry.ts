@@ -42,7 +42,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
 
     isFolder = true;
 
-    getName(): string {
+    get name(): string {
         return this.treespace.room.name;
     }
 
@@ -144,7 +144,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
         return new TreeSpaceMembership(this.files, this.treespace, m);
     }
 
-    getMembers(): IFolderMembership[] {
+    get members(): IFolderMembership[] {
         const ms: RoomMember[] = this.treespace.room.getMembers();
         return ms.map(m => this.mapMember(m));
     }
@@ -171,7 +171,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
         return this.getMembership(userId);
     }
 
-    getOwnMembership(): IFolderMembership {
+    get ownMembership(): IFolderMembership {
         return this.getMembership(this.files.getClient().getUserId());
     }
 

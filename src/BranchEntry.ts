@@ -23,7 +23,7 @@ import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
 
 export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
-    constructor(private files: MatrixFiles, private parent: IFolderEntry, public branch: MSC3089Branch) {
+    constructor(private files: MatrixFiles, public parent: IFolderEntry, public branch: MSC3089Branch) {
         super(files.client);
         super.setEventHandlers({ 'Room.timeline': this.timelineChanged });
     }
@@ -47,16 +47,24 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
 
     isFolder = false;
 
-    getName(): string {
+    get name(): string {
         return this.branch.getName();
+    }
+
+    getName(): string {
+        return this.name;
     }
 
     getParent() {
         return this.parent;
     }
 
-    getPath() {
+    get path() {
         return [...this.parent.getPath(), this.getName()];
+    }
+
+    getPath() {
+        return this.path;
     }
 
     async getCreationDate() {
@@ -165,8 +173,12 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return typeof size === 'number' ? size : -1;
     }
 
-    isLocked() {
+    get locked(): boolean {
         return this.branch.isLocked();
+    }
+
+    isLocked() {
+        return this.locked;
     }
 
     async setLocked(locked: boolean): Promise<void> {
@@ -180,7 +192,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         }
     }
 
-    getEncryptionStatus(): FileEncryptionStatus {
+    get encryptionStatus(): FileEncryptionStatus {
         const e = this.getLoadedFileEvent();
         if (!e || e.isDecryptionFailure()) {
             return 'decryptionFailed';
@@ -192,5 +204,9 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
             return 'decrypted';
         }
         return e.isEncrypted() ? 'encrypted' : 'encryptionNotEnabled';
+    }
+
+    getEncryptionStatus(): FileEncryptionStatus {
+        return this.encryptionStatus;
     }
 }

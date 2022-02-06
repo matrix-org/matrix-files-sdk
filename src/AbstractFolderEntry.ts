@@ -21,12 +21,12 @@ import { IFolderMembership } from './IFolderMembership';
 import { ArrayBufferBlob } from './ArrayBufferBlob';
 
 export abstract class AbstractFolderEntry extends AutoBindingEmitter implements IFolderEntry {
-    constructor(client: MatrixClient, private parent: IFolderEntry | undefined) {
+    constructor(client: MatrixClient, public parent: IFolderEntry | undefined) {
         super(client);
     }
     abstract addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID>;
     abstract id: string;
-    abstract getName(): string;
+    abstract name: string;
     abstract getCreationDate(): Promise<Date | undefined>;
     abstract getLastModifiedDate(): Promise<Date | undefined>;
     abstract delete(): Promise<void>;
@@ -34,24 +34,43 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
     abstract copyTo(newParent: IFolderEntry, newName: string): Promise<MatrixFilesID>;
     abstract moveTo(newParent: IFolderEntry, newName: string): Promise<MatrixFilesID>;
     abstract getCreatedByUserId(): Promise<string | undefined>;
-    abstract getMembers(): IFolderMembership[];
-    abstract getMembership(userId: string): IFolderMembership;
-    abstract getOwnMembership(): IFolderMembership;
+    abstract members: IFolderMembership[];
+    abstract ownMembership: IFolderMembership;
     abstract inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract removeMember(userId: string): Promise<void>;
 
     isFolder = true;
 
+    getName() {
+        return this.name;
+    }
+
+    getMembers() {
+        return this.members;
+    }
+
+    getMembership(userId: string) {
+        return this.ownMembership;
+    }
+
+    getOwnMembership(): IFolderMembership {
+        return this.ownMembership;
+    }
+
     getParent() {
         return this.parent;
     }
 
-    getPath() {
+    get path(): string[] {
         if (this.parent) {
             return [...this.parent.getPath(), this.getName()];
         }
         return [];
+    }
+
+    getPath() {
+        return this.path;
     }
 
     abstract getChildren(): Promise<IEntry[]>;

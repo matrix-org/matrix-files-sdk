@@ -69,8 +69,14 @@ export interface IFolderEntry extends IEntry, EventEmitter {
 
     /**
      * @returns Array of current members of the folder.
+     * @deprecated Use {@link members} instead
      */
     getMembers(): IFolderMembership[];
+
+    /**
+     * Current members of the folder.
+     */
+    members: IFolderMembership[];
 
     /**
      * Get the membership for a user ID. Throws an exception if the user is not a member.
@@ -106,7 +112,13 @@ export interface IFolderEntry extends IEntry, EventEmitter {
     removeMember(userId: string): Promise<void>;
 
     /**
-     *@returns The representation of the authenticated user on this folder.
+     * @returns The representation of the authenticated user on this folder.
+     * @deprecated Use {@link ownMembership} instead
      */
     getOwnMembership(): IFolderMembership;
+
+    /**
+     * The representation of the authenticated user on this folder.
+     */
+    ownMembership: IFolderMembership;
 }
