@@ -54,14 +54,14 @@ import { IEntry } from 'matrix-files-sdk';
 const entries: IEntry[] = await folder.getChildren();
 
 for (const e: entries) {
-  console.log(`${e.getName()} => ${e.isFolder ? 'folder' : 'file' }`);
+  console.log(`${e.name} => ${e.isFolder ? 'folder' : 'file' }`);
 }
 
 ```
 
 Entries are identified by an ID (`IEntry.id` of type `MatrixFilesID`) which are standard Matrix room and event IDs.
 
-The ID can be used on an `IFolder` with `getChildById()` and `getDescendentById()`.
+The ID can be used on an `IFolder` with `getChildById()` and `getDescendantById()`.
 
 Furthermore the `MatrixFiles.resolvePath()` function can be used to resolve an entry by name from the root of the hierarchy:
 
@@ -95,7 +95,7 @@ Moving within the hierarchy:
 const file = await files.resolvePath(['old folder', 'file.pdf']);
 
 const newFolderId = await files.addFolder('new folder');
-const newFolder = await files.getDescendentById(newFolderId);
+const newFolder = await files.getDescendantById(newFolderId);
 
 await file.moveTo(newFolder, 'file.pdf');
 ```
