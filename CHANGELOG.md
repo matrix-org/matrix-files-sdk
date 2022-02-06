@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.5.0...v2.0.0) (2022-02-06)
+
+
+### Features
+
+* removed all deprecated functions/properties ([b7bd1a6](https://github.com/matrix-org/matrix-files-sdk/commit/b7bd1a657bd1552ce9693df92dbf267a05c5dbea))
+
+
+### BREAKING CHANGES
+
+* removed all deprecated functions/properties
+
 # [1.5.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.4.0...v1.5.0) (2022-02-06)
 
 
