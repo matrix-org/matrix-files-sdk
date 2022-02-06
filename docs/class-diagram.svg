@@ -1,16 +1,16 @@
-<svg version="1.1" baseProfile="full" width="1847" height="784" viewbox="0 0 1847 784" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font-weight:bold; font-size:12pt; font-family:'Calibri', Helvetica, sans-serif;;stroke-width:3;stroke-linejoin:round;stroke-linecap:round">
+<svg version="1.1" baseProfile="full" width="1842" height="694" viewbox="0 0 1842 694" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font-weight:bold; font-size:12pt; font-family:'Calibri', Helvetica, sans-serif;;stroke-width:3;stroke-linejoin:round;stroke-linecap:round">
 <title >nomnoml</title>
 <desc >#.interface: fill=lightblue
 #.enumeration: fill=lightgreen
-[&lt;interface&gt;IEntry|id: string;parent: IFolderEntry \| undefined;path: string\[\];name: string;isFolder: boolean|getParent(): IFolderEntry \| undefined;getPath(): string\[\];getName(): string;getCreatedByUserId(): Promise&lt;string \| undefined&gt;;getCreationDate(): Promise&lt;Date \| undefined&gt;;getLastModifiedDate(): Promise&lt;Date \| undefined&gt;;delete(): Promise&lt;void&gt;;rename(): Promise&lt;void&gt;;copyTo(): Promise&lt;string&gt;;moveTo(): Promise&lt;string&gt;]
+[&lt;interface&gt;IEntry|id: string;parent: IFolderEntry \| undefined;path: string\[\];name: string;isFolder: boolean|getCreatedByUserId(): Promise&lt;string \| undefined&gt;;getCreationDate(): Promise&lt;Date \| undefined&gt;;getLastModifiedDate(): Promise&lt;Date \| undefined&gt;;delete(): Promise&lt;void&gt;;rename(): Promise&lt;void&gt;;copyTo(): Promise&lt;string&gt;;moveTo(): Promise&lt;string&gt;]
 [EventEmitter]&lt;:--[IEntry]
 [EventEmitter]&lt;:--[IEntry]
-[&lt;interface&gt;IFileEntry|version: number;locked: boolean;encryptionStatus: FileEncryptionStatus|copyAsVersion(): Promise&lt;void&gt;;addVersion(): Promise&lt;void&gt;;getBlob(): Promise&lt;ArrayBufferBlob&gt;;getSize(): Promise&lt;number&gt;;isLocked(): boolean;setLocked(): Promise&lt;void&gt;;getVersionHistory(): Promise&lt;IFileEntry\[\]&gt;;getEncryptionStatus(): FileEncryptionStatus]
+[&lt;interface&gt;IFileEntry|version: number;locked: boolean;encryptionStatus: FileEncryptionStatus|copyAsVersion(): Promise&lt;void&gt;;addVersion(): Promise&lt;void&gt;;getBlob(): Promise&lt;ArrayBufferBlob&gt;;getSize(): Promise&lt;number&gt;;setLocked(): Promise&lt;void&gt;;getVersionHistory(): Promise&lt;IFileEntry\[\]&gt;]
 [IEntry]&lt;:--[IFileEntry]
 [EventEmitter]&lt;:--[IFileEntry]
 [EventEmitter]&lt;:--[IFileEntry]
 [IFileEntry]&lt;:--[BranchEntry]
-[&lt;interface&gt;IFolderEntry|members: IFolderMembership\[\];ownMembership: IFolderMembership|getChildren(): Promise&lt;IEntry\[\]&gt;;getChildByName(): Promise&lt;IEntry \| undefined&gt;;getChildById(): Promise&lt;IEntry \| undefined&gt;;getDescendentById(): Promise&lt;IEntry \| undefined&gt;;getDescendantById(): Promise&lt;IEntry \| undefined&gt;;addFolder(): Promise&lt;string&gt;;addFile(): Promise&lt;string&gt;;getMembers(): IFolderMembership\[\];getMembership(): IFolderMembership;inviteMember(): Promise&lt;IFolderMembership&gt;;setMemberRole(): Promise&lt;IFolderMembership&gt;;removeMember(): Promise&lt;void&gt;;getOwnMembership(): IFolderMembership]
+[&lt;interface&gt;IFolderEntry|members: IFolderMembership\[\];ownMembership: IFolderMembership|getChildren(): Promise&lt;IEntry\[\]&gt;;getChildByName(): Promise&lt;IEntry \| undefined&gt;;getChildById(): Promise&lt;IEntry \| undefined&gt;;getDescendantById(): Promise&lt;IEntry \| undefined&gt;;addFolder(): Promise&lt;string&gt;;addFile(): Promise&lt;string&gt;;getMembership(): IFolderMembership;inviteMember(): Promise&lt;IFolderMembership&gt;;setMemberRole(): Promise&lt;IFolderMembership&gt;;removeMember(): Promise&lt;void&gt;]
 [IEntry]&lt;:--[IFolderEntry]
 [EventEmitter]&lt;:--[IFolderEntry]
 [EventEmitter]&lt;:--[IFolderEntry]
@@ -25,33 +25,33 @@
 [EventEmitter]&lt;:--[IMatrixFiles]
 [EventEmitter]&lt;:--[IMatrixFiles]
 [IMatrixFiles]&lt;:--[MatrixFiles]</desc>
-<path d="M1040.3 31.7 L254.5 64.5 L254.5 84.5 L254.5 84.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1027.2 37.6 L1026.9 32.3 L1026.7 26.9 L1040.3 31.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M254.5 372.5 L254.5 392.5 L297.3 442.5 L297.3 442.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M259.8 385.8 L254.5 385.8 L249.2 385.8 L254.5 372.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1040.3 33.7 L619.3 64.5 L619.3 228.5 L619.3 228.5 L619.3 392.5 L619.3 392.5 L550.9 442.5 L550.9 442.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1027.3 40 L1027 34.7 L1026.6 29.4 L1040.3 33.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M395 670.5 L395 720.5 L395 740.5 L395 740.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M400.3 683.8 L395 683.8 L389.7 683.8 L395 670.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M495.5 326.2 L659.3 392.5 L686.6 412.5 L686.6 412.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M509.9 326.2 L507.9 331.2 L505.9 336.1 L495.5 326.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1105.3 44.5 L1105.3 64.5 L1105.3 228.5 L1105.3 228.5 L1105.3 392.5 L1105.3 392.5 L1078.2 412.5 L1078.2 412.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1110.6 57.8 L1105.3 57.8 L1099.9 57.8 L1105.3 44.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M662.9 700.5 L632.3 720.5 L632.3 740.5 L632.3 740.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M654.6 712.3 L651.7 707.8 L648.8 703.3 L662.9 700.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M883.5 700.5 L883.5 720.5 L883.5 740.5 L883.5 740.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M888.8 713.8 L883.5 713.8 L878.2 713.8 L883.5 700.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1095.8 700.5 L1125.3 720.5 L1284.5 746 L1284.5 746 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1109.8 703.6 L1106.8 708 L1103.8 712.4 L1095.8 700.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1170.3 32.8 L1715 64.5 L1715 156 L1715 156 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1183.9 28.2 L1183.6 33.6 L1183.3 38.9 L1170.3 32.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1715 301 L1715 392.5 L1715 541 L1715 541 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1720.3 314.3 L1715 314.3 L1709.7 314.3 L1715 301 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1170.3 37.8 L1367 64.5 L1367 228.5 L1367 228.5 L1367 392.5 L1367 392.5 L1367 484 L1367 484 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1184.2 34.3 L1183.5 39.6 L1182.7 44.9 L1170.3 37.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<path d="M1367 629 L1367 720.5 L1355.7 740.5 L1355.7 740.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
-<path d="M1372.3 642.3 L1367 642.3 L1361.7 642.3 L1367 629 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
-<rect x="13.5" y="84.5" height="288" width="482" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+<path d="M1035.3 31.7 L254.5 64.5 L254.5 84.5 L254.5 84.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1022.2 37.6 L1021.9 32.3 L1021.7 27 L1035.3 31.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M254.5 327.5 L254.5 347.5 L296.7 390 L296.7 390 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M259.8 340.8 L254.5 340.8 L249.2 340.8 L254.5 327.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1035.3 33.8 L616.8 64.5 L616.8 206 L616.8 206 L616.8 347.5 L616.8 347.5 L550.1 390 L550.1 390 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1022.3 40.1 L1022 34.7 L1021.6 29.4 L1035.3 33.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M395 588 L395 630.5 L395 650.5 L395 650.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M400.3 601.3 L395 601.3 L389.7 601.3 L395 588 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M495.5 290.8 L656.8 347.5 L688.1 367.5 L688.1 367.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M509.8 290.2 L508.1 295.2 L506.3 300.2 L495.5 290.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1100.3 44.5 L1100.3 64.5 L1100.3 206 L1100.3 206 L1100.3 347.5 L1100.3 347.5 L1068.9 367.5 L1068.9 367.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1105.6 57.8 L1100.3 57.8 L1094.9 57.8 L1100.3 44.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M664.9 610.5 L629.8 630.5 L629.8 650.5 L629.8 650.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M656 621.7 L653.3 617.1 L650.7 612.5 L664.9 610.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M878.5 610.5 L878.5 630.5 L878.5 650.5 L878.5 650.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M883.8 623.8 L878.5 623.8 L873.2 623.8 L878.5 610.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1086.1 610.5 L1120.3 630.5 L1279.5 656 L1279.5 656 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1100.3 612.6 L1097.6 617.2 L1094.9 621.8 L1086.1 610.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1165.3 32.8 L1710 64.5 L1710 133.5 L1710 133.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1178.9 28.2 L1178.6 33.6 L1178.3 38.9 L1165.3 32.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1710 278.5 L1710 347.5 L1710 473.5 L1710 473.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1715.3 291.8 L1710 291.8 L1704.7 291.8 L1710 278.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1165.3 37.8 L1362 64.5 L1362 206 L1362 206 L1362 347.5 L1362 347.5 L1362 416.5 L1362 416.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1179.2 34.3 L1178.5 39.6 L1177.7 44.9 L1165.3 37.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<path d="M1362 561.5 L1362 630.5 L1350.7 650.5 L1350.7 650.5 " style="stroke:#33322E;fill:none;stroke-dasharray:6 6;"></path>
+<path d="M1367.3 574.8 L1362 574.8 L1356.7 574.8 L1362 561.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></path>
+<rect x="13.5" y="84.5" height="243" width="482" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
 <a id="../src/IEntry.ts.IEntry" xlink:href="../src/IEntry.ts"><text x="254.5" y="106" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IEntry</text></a>
 <path d="M13.5 115.5 L495.5 115.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
 <text x="21.5" y="137" style="fill: #33322E;font-weight:normal;">id: string</text>
@@ -60,80 +60,72 @@
 <text x="21.5" y="182" style="fill: #33322E;font-weight:normal;">name: string</text>
 <text x="21.5" y="197" style="fill: #33322E;font-weight:normal;">isFolder: boolean</text>
 <path d="M13.5 206.5 L495.5 206.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="21.5" y="228" style="fill: #33322E;font-weight:normal;">getParent(): IFolderEntry | undefined</text>
-<text x="21.5" y="243" style="fill: #33322E;font-weight:normal;">getPath(): string[]</text>
-<text x="21.5" y="258" style="fill: #33322E;font-weight:normal;">getName(): string</text>
-<text x="21.5" y="273" style="fill: #33322E;font-weight:normal;">getCreatedByUserId(): Promise&lt;string | undefined&gt;</text>
-<text x="21.5" y="288" style="fill: #33322E;font-weight:normal;">getCreationDate(): Promise&lt;Date | undefined&gt;</text>
-<text x="21.5" y="303" style="fill: #33322E;font-weight:normal;">getLastModifiedDate(): Promise&lt;Date | undefined&gt;</text>
-<text x="21.5" y="318" style="fill: #33322E;font-weight:normal;">delete(): Promise&lt;void&gt;</text>
-<text x="21.5" y="333" style="fill: #33322E;font-weight:normal;">rename(): Promise&lt;void&gt;</text>
-<text x="21.5" y="348" style="fill: #33322E;font-weight:normal;">copyTo(): Promise&lt;string&gt;</text>
-<text x="21.5" y="363" style="fill: #33322E;font-weight:normal;">moveTo(): Promise&lt;string&gt;</text>
-<rect x="182.5" y="442.5" height="228" width="425" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
-<a id="../src/IFileEntry.ts.IFileEntry" xlink:href="../src/IFileEntry.ts"><text x="395" y="464" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFileEntry</text></a>
-<path d="M182.5 473.5 L607.5 473.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="190.5" y="495" style="fill: #33322E;font-weight:normal;">version: number</text>
-<text x="190.5" y="510" style="fill: #33322E;font-weight:normal;">locked: boolean</text>
-<text x="190.5" y="525" style="fill: #33322E;font-weight:normal;">encryptionStatus: FileEncryptionStatus</text>
-<path d="M182.5 534.5 L607.5 534.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="190.5" y="556" style="fill: #33322E;font-weight:normal;">copyAsVersion(): Promise&lt;void&gt;</text>
-<text x="190.5" y="571" style="fill: #33322E;font-weight:normal;">addVersion(): Promise&lt;void&gt;</text>
-<text x="190.5" y="586" style="fill: #33322E;font-weight:normal;">getBlob(): Promise&lt;ArrayBufferBlob&gt;</text>
-<text x="190.5" y="601" style="fill: #33322E;font-weight:normal;">getSize(): Promise&lt;number&gt;</text>
-<text x="190.5" y="616" style="fill: #33322E;font-weight:normal;">isLocked(): boolean</text>
-<text x="190.5" y="631" style="fill: #33322E;font-weight:normal;">setLocked(): Promise&lt;void&gt;</text>
-<text x="190.5" y="646" style="fill: #33322E;font-weight:normal;">getVersionHistory(): Promise&lt;IFileEntry[]&gt;</text>
-<text x="190.5" y="661" style="fill: #33322E;font-weight:normal;">getEncryptionStatus(): FileEncryptionStatus</text>
-<rect x="647.5" y="412.5" height="288" width="472" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
-<a id="../src/IFolderEntry.ts.IFolderEntry" xlink:href="../src/IFolderEntry.ts"><text x="883.5" y="434" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFolderEntry</text></a>
-<path d="M647.5 443.5 L1119.5 443.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="655.5" y="465" style="fill: #33322E;font-weight:normal;">members: IFolderMembership[]</text>
-<text x="655.5" y="480" style="fill: #33322E;font-weight:normal;">ownMembership: IFolderMembership</text>
-<path d="M647.5 489.5 L1119.5 489.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="655.5" y="511" style="fill: #33322E;font-weight:normal;">getChildren(): Promise&lt;IEntry[]&gt;</text>
-<text x="655.5" y="526" style="fill: #33322E;font-weight:normal;">getChildByName(): Promise&lt;IEntry | undefined&gt;</text>
-<text x="655.5" y="541" style="fill: #33322E;font-weight:normal;">getChildById(): Promise&lt;IEntry | undefined&gt;</text>
-<text x="655.5" y="556" style="fill: #33322E;font-weight:normal;">getDescendentById(): Promise&lt;IEntry | undefined&gt;</text>
-<text x="655.5" y="571" style="fill: #33322E;font-weight:normal;">getDescendantById(): Promise&lt;IEntry | undefined&gt;</text>
-<text x="655.5" y="586" style="fill: #33322E;font-weight:normal;">addFolder(): Promise&lt;string&gt;</text>
-<text x="655.5" y="601" style="fill: #33322E;font-weight:normal;">addFile(): Promise&lt;string&gt;</text>
-<text x="655.5" y="616" style="fill: #33322E;font-weight:normal;">getMembers(): IFolderMembership[]</text>
-<text x="655.5" y="631" style="fill: #33322E;font-weight:normal;">getMembership(): IFolderMembership</text>
-<text x="655.5" y="646" style="fill: #33322E;font-weight:normal;">inviteMember(): Promise&lt;IFolderMembership&gt;</text>
-<text x="655.5" y="661" style="fill: #33322E;font-weight:normal;">setMemberRole(): Promise&lt;IFolderMembership&gt;</text>
-<text x="655.5" y="676" style="fill: #33322E;font-weight:normal;">removeMember(): Promise&lt;void&gt;</text>
-<text x="655.5" y="691" style="fill: #33322E;font-weight:normal;">getOwnMembership(): IFolderMembership</text>
-<rect x="1595.5" y="156.5" height="145" width="239" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
-<a id="../src/IFolderMembership.ts.IFolderMembership" xlink:href="../src/IFolderMembership.ts"><text x="1715" y="178" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFolderMembership</text></a>
-<path d="M1595.5 187.5 L1834.5 187.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="1603.5" y="209" style="fill: #33322E;font-weight:normal;">userId: string</text>
-<text x="1603.5" y="224" style="fill: #33322E;font-weight:normal;">role: TreePermissions</text>
-<text x="1603.5" y="239" style="fill: #33322E;font-weight:normal;">since: Date</text>
-<text x="1603.5" y="254" style="fill: #33322E;font-weight:normal;">canInvite: boolean</text>
-<text x="1603.5" y="269" style="fill: #33322E;font-weight:normal;">canRemove: boolean</text>
-<text x="1603.5" y="284" style="fill: #33322E;font-weight:normal;">canManageRoles: boolean</text>
-<path d="M1595.5 293.5 L1834.5 293.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<rect x="1159.5" y="484.5" height="145" width="415" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
-<a id="../src/IMatrixFiles.ts.IMatrixFiles" xlink:href="../src/IMatrixFiles.ts"><text x="1367" y="506" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IMatrixFiles</text></a>
-<path d="M1159.5 515.5 L1574.5 515.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<path d="M1159.5 523.5 L1574.5 523.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
-<text x="1167.5" y="545" style="fill: #33322E;font-weight:normal;">resolvePath(): Promise&lt;IEntry | undefined&gt;</text>
-<text x="1167.5" y="560" style="fill: #33322E;font-weight:normal;">sync(): Promise&lt;void&gt;</text>
-<text x="1167.5" y="575" style="fill: #33322E;font-weight:normal;">logout(): Promise&lt;void&gt;</text>
-<text x="1167.5" y="590" style="fill: #33322E;font-weight:normal;">deactivate(): Promise&lt;void&gt;</text>
-<text x="1167.5" y="605" style="fill: #33322E;font-weight:normal;">getPendingInvites(): Promise&lt;Room[]&gt;</text>
-<text x="1167.5" y="620" style="fill: #33322E;font-weight:normal;">acceptInvite(): Promise&lt;void&gt;</text>
-<rect x="1040.5" y="13.5" height="31" width="130" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="1105.5" y="35" style="fill: #33322E;text-anchor: middle;">EventEmitter</text>
-<rect x="334.5" y="740.5" height="31" width="121" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="395" y="762" style="fill: #33322E;text-anchor: middle;">BranchEntry</text>
-<rect x="533.5" y="740.5" height="31" width="197" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="632" y="762" style="fill: #33322E;text-anchor: middle;">AbstractFolderEntry</text>
-<rect x="809.5" y="740.5" height="31" width="149" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="884" y="762" style="fill: #33322E;text-anchor: middle;">TreeSpaceEntry</text>
-<rect x="1284.5" y="740.5" height="31" width="125" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="1347" y="762" style="fill: #33322E;text-anchor: middle;">MatrixFiles</text>
-<rect x="1614.5" y="541.5" height="31" width="201" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
-<text x="1715" y="563" style="fill: #33322E;text-anchor: middle;">TreeSpaceMembership</text>
+<text x="21.5" y="228" style="fill: #33322E;font-weight:normal;">getCreatedByUserId(): Promise&lt;string | undefined&gt;</text>
+<text x="21.5" y="243" style="fill: #33322E;font-weight:normal;">getCreationDate(): Promise&lt;Date | undefined&gt;</text>
+<text x="21.5" y="258" style="fill: #33322E;font-weight:normal;">getLastModifiedDate(): Promise&lt;Date | undefined&gt;</text>
+<text x="21.5" y="273" style="fill: #33322E;font-weight:normal;">delete(): Promise&lt;void&gt;</text>
+<text x="21.5" y="288" style="fill: #33322E;font-weight:normal;">rename(): Promise&lt;void&gt;</text>
+<text x="21.5" y="303" style="fill: #33322E;font-weight:normal;">copyTo(): Promise&lt;string&gt;</text>
+<text x="21.5" y="318" style="fill: #33322E;font-weight:normal;">moveTo(): Promise&lt;string&gt;</text>
+<rect x="187.5" y="390.5" height="198" width="415" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+<a id="../src/IFileEntry.ts.IFileEntry" xlink:href="../src/IFileEntry.ts"><text x="395" y="412" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFileEntry</text></a>
+<path d="M187.5 421.5 L602.5 421.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="195.5" y="443" style="fill: #33322E;font-weight:normal;">version: number</text>
+<text x="195.5" y="458" style="fill: #33322E;font-weight:normal;">locked: boolean</text>
+<text x="195.5" y="473" style="fill: #33322E;font-weight:normal;">encryptionStatus: FileEncryptionStatus</text>
+<path d="M187.5 482.5 L602.5 482.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="195.5" y="504" style="fill: #33322E;font-weight:normal;">copyAsVersion(): Promise&lt;void&gt;</text>
+<text x="195.5" y="519" style="fill: #33322E;font-weight:normal;">addVersion(): Promise&lt;void&gt;</text>
+<text x="195.5" y="534" style="fill: #33322E;font-weight:normal;">getBlob(): Promise&lt;ArrayBufferBlob&gt;</text>
+<text x="195.5" y="549" style="fill: #33322E;font-weight:normal;">getSize(): Promise&lt;number&gt;</text>
+<text x="195.5" y="564" style="fill: #33322E;font-weight:normal;">setLocked(): Promise&lt;void&gt;</text>
+<text x="195.5" y="579" style="fill: #33322E;font-weight:normal;">getVersionHistory(): Promise&lt;IFileEntry[]&gt;</text>
+<rect x="642.5" y="367.5" height="243" width="472" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+<a id="../src/IFolderEntry.ts.IFolderEntry" xlink:href="../src/IFolderEntry.ts"><text x="878.5" y="389" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFolderEntry</text></a>
+<path d="M642.5 398.5 L1114.5 398.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="650.5" y="420" style="fill: #33322E;font-weight:normal;">members: IFolderMembership[]</text>
+<text x="650.5" y="435" style="fill: #33322E;font-weight:normal;">ownMembership: IFolderMembership</text>
+<path d="M642.5 444.5 L1114.5 444.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="650.5" y="466" style="fill: #33322E;font-weight:normal;">getChildren(): Promise&lt;IEntry[]&gt;</text>
+<text x="650.5" y="481" style="fill: #33322E;font-weight:normal;">getChildByName(): Promise&lt;IEntry | undefined&gt;</text>
+<text x="650.5" y="496" style="fill: #33322E;font-weight:normal;">getChildById(): Promise&lt;IEntry | undefined&gt;</text>
+<text x="650.5" y="511" style="fill: #33322E;font-weight:normal;">getDescendantById(): Promise&lt;IEntry | undefined&gt;</text>
+<text x="650.5" y="526" style="fill: #33322E;font-weight:normal;">addFolder(): Promise&lt;string&gt;</text>
+<text x="650.5" y="541" style="fill: #33322E;font-weight:normal;">addFile(): Promise&lt;string&gt;</text>
+<text x="650.5" y="556" style="fill: #33322E;font-weight:normal;">getMembership(): IFolderMembership</text>
+<text x="650.5" y="571" style="fill: #33322E;font-weight:normal;">inviteMember(): Promise&lt;IFolderMembership&gt;</text>
+<text x="650.5" y="586" style="fill: #33322E;font-weight:normal;">setMemberRole(): Promise&lt;IFolderMembership&gt;</text>
+<text x="650.5" y="601" style="fill: #33322E;font-weight:normal;">removeMember(): Promise&lt;void&gt;</text>
+<rect x="1590.5" y="133.5" height="145" width="239" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+<a id="../src/IFolderMembership.ts.IFolderMembership" xlink:href="../src/IFolderMembership.ts"><text x="1710" y="155" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IFolderMembership</text></a>
+<path d="M1590.5 164.5 L1829.5 164.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="1598.5" y="186" style="fill: #33322E;font-weight:normal;">userId: string</text>
+<text x="1598.5" y="201" style="fill: #33322E;font-weight:normal;">role: TreePermissions</text>
+<text x="1598.5" y="216" style="fill: #33322E;font-weight:normal;">since: Date</text>
+<text x="1598.5" y="231" style="fill: #33322E;font-weight:normal;">canInvite: boolean</text>
+<text x="1598.5" y="246" style="fill: #33322E;font-weight:normal;">canRemove: boolean</text>
+<text x="1598.5" y="261" style="fill: #33322E;font-weight:normal;">canManageRoles: boolean</text>
+<path d="M1590.5 270.5 L1829.5 270.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<rect x="1154.5" y="416.5" height="145" width="415" style="stroke:#33322E;fill:lightblue;stroke-dasharray:none;"></rect>
+<a id="../src/IMatrixFiles.ts.IMatrixFiles" xlink:href="../src/IMatrixFiles.ts"><text x="1362" y="438" style="fill: #33322E;font-weight:normal;text-anchor: middle;">IMatrixFiles</text></a>
+<path d="M1154.5 447.5 L1569.5 447.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<path d="M1154.5 455.5 L1569.5 455.5" style="stroke:#33322E;fill:none;stroke-dasharray:none;"></path>
+<text x="1162.5" y="477" style="fill: #33322E;font-weight:normal;">resolvePath(): Promise&lt;IEntry | undefined&gt;</text>
+<text x="1162.5" y="492" style="fill: #33322E;font-weight:normal;">sync(): Promise&lt;void&gt;</text>
+<text x="1162.5" y="507" style="fill: #33322E;font-weight:normal;">logout(): Promise&lt;void&gt;</text>
+<text x="1162.5" y="522" style="fill: #33322E;font-weight:normal;">deactivate(): Promise&lt;void&gt;</text>
+<text x="1162.5" y="537" style="fill: #33322E;font-weight:normal;">getPendingInvites(): Promise&lt;Room[]&gt;</text>
+<text x="1162.5" y="552" style="fill: #33322E;font-weight:normal;">acceptInvite(): Promise&lt;void&gt;</text>
+<rect x="1035.5" y="13.5" height="31" width="130" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="1100.5" y="35" style="fill: #33322E;text-anchor: middle;">EventEmitter</text>
+<rect x="334.5" y="650.5" height="31" width="121" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="395" y="672" style="fill: #33322E;text-anchor: middle;">BranchEntry</text>
+<rect x="531.5" y="650.5" height="31" width="197" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="630" y="672" style="fill: #33322E;text-anchor: middle;">AbstractFolderEntry</text>
+<rect x="804.5" y="650.5" height="31" width="149" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="879" y="672" style="fill: #33322E;text-anchor: middle;">TreeSpaceEntry</text>
+<rect x="1279.5" y="650.5" height="31" width="125" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="1342" y="672" style="fill: #33322E;text-anchor: middle;">MatrixFiles</text>
+<rect x="1609.5" y="473.5" height="31" width="201" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;"></rect>
+<text x="1710" y="495" style="fill: #33322E;text-anchor: middle;">TreeSpaceMembership</text>
 </svg>
