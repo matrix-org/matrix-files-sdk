@@ -55,10 +55,6 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return [...this.parent.path, this.name];
     }
 
-    getPath() {
-        return this.path;
-    }
-
     async getCreationDate() {
         const history = await this.branch.getVersionHistory();
         return new Date(history[history.length - 1].indexEvent.getTs());
@@ -169,10 +165,6 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return this.branch.isLocked();
     }
 
-    isLocked() {
-        return this.locked;
-    }
-
     async setLocked(locked: boolean): Promise<void> {
         return this.branch.setLocked(locked);
     }
@@ -196,9 +188,5 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
             return 'decrypted';
         }
         return e.isEncrypted() ? 'encrypted' : 'encryptionNotEnabled';
-    }
-
-    getEncryptionStatus(): FileEncryptionStatus {
-        return this.encryptionStatus;
     }
 }
