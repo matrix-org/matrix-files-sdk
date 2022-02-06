@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.4.0...v1.5.0) (2022-02-06)
+
+
+### Features
+
+* cleanup interfaces exposed by SDK and deprecate old names ([#3](https://github.com/matrix-org/matrix-files-sdk/issues/3)) ([2188799](https://github.com/matrix-org/matrix-files-sdk/commit/21887995a3940ba8e7cdf03b635076dba762445b))
+
 # [1.4.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.3.0...v1.4.0) (2022-02-05)
 
 
