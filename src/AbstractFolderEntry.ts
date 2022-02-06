@@ -36,6 +36,7 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
     abstract getCreatedByUserId(): Promise<string | undefined>;
     abstract members: IFolderMembership[];
     abstract ownMembership: IFolderMembership;
+    abstract getMembership(userId: string): IFolderMembership;
     abstract inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract removeMember(userId: string): Promise<void>;
@@ -48,10 +49,6 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
 
     getMembers() {
         return this.members;
-    }
-
-    getMembership(userId: string) {
-        return this.ownMembership;
     }
 
     getOwnMembership(): IFolderMembership {
