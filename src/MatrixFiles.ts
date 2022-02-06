@@ -44,11 +44,11 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         return this.client;
     }
 
-    getPath() {
+    get path() {
         return [];
     }
 
-    getName() {
+    get name() {
         return '';
     }
 
@@ -189,7 +189,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         });
     }
 
-    getMembers(): IFolderMembership[] {
+    get members(): IFolderMembership[] {
         throw new Error('Function not available on root.');
     }
 
@@ -209,7 +209,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         throw new Error('Function not available on root.');
     }
 
-    getOwnMembership(): IFolderMembership {
+    get ownMembership(): IFolderMembership {
         throw new Error('Function not available on root.');
     }
 
