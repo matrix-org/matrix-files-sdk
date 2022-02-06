@@ -111,6 +111,10 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
     }
 
     async getDescendentById(id: string, maxDepth?: number): Promise<IEntry | undefined> {
+        return this.getDescendantById(id, maxDepth);
+    }
+
+    async getDescendantById(id: string, maxDepth?: number): Promise<IEntry | undefined> {
         const children = await this.getChildren();
         // breadth first search
         for (const c of children) {

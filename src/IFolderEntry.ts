@@ -47,8 +47,17 @@ export interface IFolderEntry extends IEntry, EventEmitter {
      *
      * @param name The ID of the descendant to locate.
      * @returns The entry if found, otherwise `undefined`.
+     * @deprecated use {@link getDescendantById}
      */
     getDescendentById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
+
+    /**
+     * Find a descendant entry by {@link MatrixFilesID}`.
+     *
+     * @param name The ID of the descendant to locate.
+     * @returns The entry if found, otherwise `undefined`.
+     */
+    getDescendantById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
 
     /**
      * Add a (sub) folder to this folder.
