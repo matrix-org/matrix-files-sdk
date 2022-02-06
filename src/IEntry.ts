@@ -29,32 +29,14 @@ export interface IEntry extends EventEmitter {
     id: MatrixFilesID;
 
     /**
-     * @returns Returns the parent of this entry or undefined if it is at the top-level.
-     * @deprecated Use {@link parent} instead
-     */
-    getParent(): IFolderEntry | undefined;
-
-    /**
      * The parent of this entry or undefined if it is at the top-level.
      */
     parent: IFolderEntry | undefined;
 
     /**
      * All parts of the path including the file/leaf name. This is the same path that would be resolved by {@link IMatrixFiles.resolvePath}.
-     * @deprecated Use {@link path} instead
-     */
-    getPath(): string[];
-
-    /**
-     * All parts of the path including the file/leaf name. This is the same path that would be resolved by {@link IMatrixFiles.resolvePath}.
      */
     path: string[];
-
-    /**
-     * @returns The name of this entry.
-     * @deprecated Use {@link name} instead
-     */
-    getName(): string;
 
     /**
      * The name of this entry.

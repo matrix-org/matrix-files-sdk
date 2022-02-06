@@ -43,25 +43,9 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
 
     isFolder = true;
 
-    getName() {
-        return this.name;
-    }
-
-    getMembers() {
-        return this.members;
-    }
-
-    getOwnMembership(): IFolderMembership {
-        return this.ownMembership;
-    }
-
-    getParent() {
-        return this.parent;
-    }
-
     get path(): string[] {
         if (this.parent) {
-            return [...this.parent.getPath(), this.getName()];
+            return [...this.parent.path, this.name];
         }
         return [];
     }
@@ -73,7 +57,7 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
     abstract getChildren(): Promise<IEntry[]>;
 
     async getChildByName(name: string) {
-        return (await this.getChildren()).find(x => x.getName() === name);
+        return (await this.getChildren()).find(x => x.name === name);
     }
 
     async getChildById(id: MatrixFilesID) {
@@ -123,7 +107,7 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
             for (const c of children) {
                 if (c.isFolder) {
                     const f = c as IFolderEntry;
-                    const found = await f.getDescendentById(
+                    const found = await f.getDescendantById(
                         id,
                         typeof maxDepth !== 'number' ? undefined : maxDepth - 1,
                     );

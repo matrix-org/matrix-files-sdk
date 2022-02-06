@@ -58,7 +58,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async getChildByName(name: string): Promise<IEntry | undefined> {
-        return (await this.getChildren()).find(x => x.getName() === name);
+        return (await this.getChildren()).find(x => x.name === name);
     }
 
     async getChildById(id: MatrixFilesID): Promise<IEntry | undefined> {
@@ -98,7 +98,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
         // simple rename?
-        if (resolvedParent.id === this.getParent()?.id) {
+        if (resolvedParent.id === this.parent?.id) {
             await this.rename(fileName);
             return this.id;
         }
@@ -177,7 +177,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
 
     private emitModified(e: MatrixEvent | Room) {
         this.emit('modified', e);
-        const parent = this.getParent();
+        const parent = this.parent;
         if (parent) {
             parent.emit('modified', this, e);
         }

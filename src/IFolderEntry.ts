@@ -47,15 +47,6 @@ export interface IFolderEntry extends IEntry, EventEmitter {
      *
      * @param name The ID of the descendant to locate.
      * @returns The entry if found, otherwise `undefined`.
-     * @deprecated use {@link getDescendantById}
-     */
-    getDescendentById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
-
-    /**
-     * Find a descendant entry by {@link MatrixFilesID}`.
-     *
-     * @param name The ID of the descendant to locate.
-     * @returns The entry if found, otherwise `undefined`.
      */
     getDescendantById(id: MatrixFilesID, maxSearchDepth?: number): Promise<IEntry | undefined>;
 
@@ -75,12 +66,6 @@ export interface IFolderEntry extends IEntry, EventEmitter {
      * @returns The ID of the new folder.
      */
     addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID>;
-
-    /**
-     * @returns Array of current members of the folder.
-     * @deprecated Use {@link members} instead
-     */
-    getMembers(): IFolderMembership[];
 
     /**
      * Current members of the folder.
@@ -119,12 +104,6 @@ export interface IFolderEntry extends IEntry, EventEmitter {
      * @param userId The Matrix user ID of the member to remove.
      */
     removeMember(userId: string): Promise<void>;
-
-    /**
-     * @returns The representation of the authenticated user on this folder.
-     * @deprecated Use {@link ownMembership} instead
-     */
-    getOwnMembership(): IFolderMembership;
 
     /**
      * The representation of the authenticated user on this folder.

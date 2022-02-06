@@ -51,16 +51,8 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return this.branch.getName();
     }
 
-    getName(): string {
-        return this.name;
-    }
-
-    getParent() {
-        return this.parent;
-    }
-
     get path() {
-        return [...this.parent.getPath(), this.getName()];
+        return [...this.parent.path, this.name];
     }
 
     getPath() {
@@ -109,7 +101,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
             const v = versions.shift();
             if (v) {
                 const downloadedVersion = await v.getBlob();
-                await newFile.addVersion(downloadedVersion, v.getName());
+                await newFile.addVersion(downloadedVersion, v.name);
             }
         }
 
@@ -118,7 +110,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
         // simple rename?
-        if (resolvedParent.id === this.getParent().id) {
+        if (resolvedParent.id === this.parent.id) {
             await this.rename(fileName);
             return this.id;
         }
@@ -136,7 +128,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         } = file;
         const encrypted = await encryptAttachment(data);
 
-        return this.branch.createNewVersion(newName ?? this.getName(), Buffer.from(encrypted.data), encrypted.info, {
+        return this.branch.createNewVersion(newName ?? this.name, Buffer.from(encrypted.data), encrypted.info, {
             info: {
                 mimetype,
                 size,

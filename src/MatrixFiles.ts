@@ -106,7 +106,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         const paths = path.slice(); // make a clone as we are modifying the array
 
         while (next) {
-            const matching = (await next.getChildren()).find(x => x.getName() === paths[0]);
+            const matching = (await next.getChildren()).find(x => x.name === paths[0]);
             if (!matching) {
                 next = undefined;
             } else {

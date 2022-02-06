@@ -63,12 +63,6 @@ export interface IFileEntry extends IEntry, EventEmitter {
     getSize(): Promise<number>;
 
     /**
-     * @returns The current lock disposition for this file.
-     * @deprecated Use {@link locked} instead
-     */
-    isLocked(): boolean;
-
-    /**
      * The current lock disposition for this file.
      */
     locked: boolean;
@@ -86,12 +80,6 @@ export interface IFileEntry extends IEntry, EventEmitter {
      * @returns Array of versions including this version.
      */
     getVersionHistory(): Promise<IFileEntry[]>;
-
-    /**
-     * @returns The disposition of this file with regards to Matrix end-to-end encryption.
-     * @deprecated Use {@link encryptionStatus} instead
-     */
-    getEncryptionStatus(): FileEncryptionStatus;
 
     /**
      * The disposition of this file with regards to Matrix end-to-end encryption.
