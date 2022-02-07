@@ -94,30 +94,6 @@ export abstract class AutoBindingEmitter extends EventEmitter {
         return this;
     }
 
-    setMaxListeners(n: number): this {
-        return super.setMaxListeners(n);
-    }
-
-    getMaxListeners(): number {
-        return super.getMaxListeners();
-    }
-
-    listeners(event: string | symbol): Function[] {
-        return super.listeners(event);
-    }
-
-    rawListeners(event: string | symbol): Function[] {
-        return super.rawListeners(event);
-    }
-
-    emit(event: string | symbol, ...args: any[]): boolean {
-        return super.emit(event, ...args);
-    }
-
-    listenerCount(event: string | symbol): number {
-        return super.listenerCount(event);
-    }
-
     prependListener(event: string | symbol, listener: (...args: any[]) => void): this {
         super.prependListener(event, listener);
         this.autobind();
@@ -128,10 +104,6 @@ export abstract class AutoBindingEmitter extends EventEmitter {
         super.prependOnceListener(event, listener);
         this.autobind();
         return this;
-    }
-
-    eventNames(): (string | symbol)[] {
-        return super.eventNames();
     }
 }
 
