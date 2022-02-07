@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.0...v2.0.1) (2022-02-07)
+
+
+### Bug Fixes
+
+* include class diagram in npm ([96a3d45](https://github.com/matrix-org/matrix-files-sdk/commit/96a3d456ee29805d44d44abbe3aa3dcb30888c55))
+
 # [2.0.0](https://github.com/matrix-org/matrix-files-sdk/compare/v1.5.0...v2.0.0) (2022-02-06)
 
 
