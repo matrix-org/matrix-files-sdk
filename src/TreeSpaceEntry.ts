@@ -186,6 +186,12 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     nameChanged(r: Room) {
         if (r.roomId === this.id) {
             this.emitModified(r);
+        } else {
+            // see if the room is a child folder/space of us
+            const parents = r.currentState.getStateEvents(EventType.SpaceParent);
+            if (parents.length > 0 && parents[0].getStateKey() === this.id) {
+                this.emitModified(r);
+            }
         }
     }
 
