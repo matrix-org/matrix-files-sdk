@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.2...v2.0.3) (2022-02-07)
+
+
+### Bug Fixes
+
+* get version history more reliably ([7294e19](https://github.com/matrix-org/matrix-files-sdk/commit/7294e19d0b944077862abe4ea485c650a10ccfea))
+
 ## [2.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.1...v2.0.2) (2022-02-07)
 
 
