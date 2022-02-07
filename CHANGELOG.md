@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.1...v2.0.2) (2022-02-07)
+
+
+### Bug Fixes
+
+* emit modified event when child room changes name ([5f69f88](https://github.com/matrix-org/matrix-files-sdk/commit/5f69f88efb65f60d9f36aa764aab552a2cef9117))
+
 ## [2.0.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.0...v2.0.1) (2022-02-07)
 
 
