@@ -17,13 +17,13 @@ limitations under the License.
 import type { MSC3089Branch } from 'matrix-js-sdk/lib/models/MSC3089Branch';
 import type { MatrixEvent, Room } from 'matrix-js-sdk/lib';
 import { encryptAttachment, decryptAttachment } from 'matrix-encrypt-attachment';
-import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, MatrixFiles } from '.';
+import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, MatrixFiles, TreeSpaceEntry } from '.';
 import { ArrayBufferBlob } from './ArrayBufferBlob';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
 
 export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
-    constructor(private files: MatrixFiles, public parent: IFolderEntry, public branch: MSC3089Branch) {
+    constructor(private files: MatrixFiles, public parent: TreeSpaceEntry, public branch: MSC3089Branch) {
         super(files.client);
         super.setEventHandlers({ 'Room.timeline': this.timelineChanged });
     }
@@ -41,8 +41,29 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async getVersionHistory(): Promise<IFileEntry[]> {
-        const versions = await this.branch.getVersionHistory();
-        return versions.map(x => new BranchEntry(this.files, this.parent, x));
+        const versions: BranchEntry[] = [];
+        versions.push(this); // start with ourselves
+
+        let childEvent: MatrixEvent | undefined;
+        let parentEvent = await this.branch.getFileEvent();
+        do {
+            const replacingEventId = parentEvent.getRelation()?.event_id;
+
+            if (replacingEventId) {
+                childEvent = this.parent.treespace.room.findEventById(replacingEventId);
+                if (childEvent) {
+                    const childBranch = this.parent.treespace.getFile(childEvent.getId());
+                    if (childBranch) {
+                        versions.push(new BranchEntry(this.files, this.parent, childBranch!));
+                        parentEvent = childEvent;
+                        continue;
+                    }
+                }
+            }
+            break;
+        } while (childEvent);
+
+        return versions;
     }
 
     isFolder = false;
