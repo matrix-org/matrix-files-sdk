@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.3...v2.0.4) (2022-02-11)
+
+
+### Bug Fixes
+
+* correctly handle case of unknown last modified date on folder ([67eb982](https://github.com/matrix-org/matrix-files-sdk/commit/67eb982335361cd040cb1d4fd4c4a8c116d4bc8b))
+
 ## [2.0.3](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.2...v2.0.3) (2022-02-07)
 
 
