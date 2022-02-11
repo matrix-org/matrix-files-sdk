@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.4...v2.0.5) (2022-02-11)
+
+
+### Bug Fixes
+
+* export IMatrixFiles ([05a8000](https://github.com/matrix-org/matrix-files-sdk/commit/05a800049f511f9eaace4c16bff19ad1df3f5d96))
+
 ## [2.0.4](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.3...v2.0.4) (2022-02-11)
 
 
