@@ -80,7 +80,8 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async getLastModifiedDate() {
-        return new Date(this.treespace.room.getLastActiveTimestamp());
+        const ts = this.treespace.room.getLastActiveTimestamp();
+        return ts > 0 ? new Date(ts) : undefined;
     }
 
     async delete() {
