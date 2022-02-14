@@ -42,6 +42,10 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
 
     isFolder = true;
 
+    get writable() {
+        return this.ownMembership.canWrite;
+    }
+
     get name(): string {
         return this.treespace.room.name;
     }

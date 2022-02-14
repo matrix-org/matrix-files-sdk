@@ -16,7 +16,7 @@ limitations under the License.
 
 import type { RoomMember } from 'matrix-js-sdk/lib';
 import { EventType } from 'matrix-js-sdk/lib/@types/event';
-import type { MSC3089TreeSpace } from 'matrix-js-sdk/lib/models/MSC3089TreeSpace';
+import { MSC3089TreeSpace, TreePermissions } from 'matrix-js-sdk/lib/models/MSC3089TreeSpace';
 import EventEmitter from 'events';
 import { IFolderMembership, MatrixFiles } from '.';
 
@@ -47,5 +47,9 @@ export class TreeSpaceMembership extends EventEmitter implements IFolderMembersh
     get canManageRoles() {
         return this.treespace.room.currentState.maySendStateEvent(
             EventType.RoomPowerLevels, this.files.getClient().getUserId());
+    }
+
+    get canWrite() {
+        return [TreePermissions.Editor, TreePermissions.Owner].includes(this.treespace.getPermissions(this.userId));
     }
 }

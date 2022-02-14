@@ -40,6 +40,7 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
     abstract inviteMember(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract setMemberRole(userId: string, role: FolderRole): Promise<IFolderMembership>;
     abstract removeMember(userId: string): Promise<void>;
+    abstract writable: boolean;
 
     isFolder = true;
 

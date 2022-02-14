@@ -52,6 +52,8 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         return '';
     }
 
+    writable = false;
+
     async getCreatedByUserId() {
         return '';
     }

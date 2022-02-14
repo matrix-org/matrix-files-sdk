@@ -49,6 +49,11 @@ export interface IEntry extends EventEmitter {
     isFolder: boolean;
 
     /**
+     * `true` if this user can write to the entry.
+     */
+    writable: boolean;
+
+    /**
      * @returns The Matrix user ID that created the entry or `undefined` if not available/known.
      */
     getCreatedByUserId(): Promise<string | undefined>;

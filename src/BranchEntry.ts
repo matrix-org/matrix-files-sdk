@@ -76,6 +76,10 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return [...this.parent.path, this.name];
     }
 
+    get writable() {
+        return this.parent?.writable ?? false;
+    }
+
     async getCreationDate() {
         const history = await this.branch.getVersionHistory();
         return new Date(history[history.length - 1].indexEvent.getTs());

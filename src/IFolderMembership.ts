@@ -47,7 +47,12 @@ export interface IFolderMembership extends EventEmitter {
     canRemove: boolean;
 
     /**
-     * `true` if the member has power to remove change the power of another member of the golder.
+     * `true` if the member has power to remove change the power of another member of the folder.
      */
     canManageRoles: boolean;
+
+    /**
+     * `true` if the member has power to write or change the content of the folder.
+     */
+    canWrite: boolean;
 }
