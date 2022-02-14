@@ -52,7 +52,8 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         return '';
     }
 
-    writable = false;
+    // top-level is writable, but only for folders
+    writable = true;
 
     async getCreatedByUserId() {
         return '';
