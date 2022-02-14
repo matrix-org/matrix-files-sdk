@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.0...v2.1.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* top-level is writable for folders ([30743b2](https://github.com/matrix-org/matrix-files-sdk/commit/30743b22c4bee729a4fc5463267970e0910beaf5))
+
 # [2.1.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.5...v2.1.0) (2022-02-14)
 
 
