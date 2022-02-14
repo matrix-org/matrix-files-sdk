@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.5...v2.1.0) (2022-02-14)
+
+
+### Features
+
+* add IEntry.writable and IFolderMembership.canWrite ([7debecc](https://github.com/matrix-org/matrix-files-sdk/commit/7debeccf3ff640169737c3f66a6d2ab308982efa))
+
 ## [2.0.5](https://github.com/matrix-org/matrix-files-sdk/compare/v2.0.4...v2.0.5) (2022-02-11)
 
 
