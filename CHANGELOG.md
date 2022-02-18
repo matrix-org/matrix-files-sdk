@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.1...v2.2.0) (2022-02-18)
+
+
+### Features
+
+* add logging support via log4js ([a52e43a](https://github.com/matrix-org/matrix-files-sdk/commit/a52e43ace6a60cde1da2cbfcae5046d52c68978f))
+
 ## [2.1.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.0...v2.1.1) (2022-02-14)
 
 
