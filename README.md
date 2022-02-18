@@ -109,3 +109,32 @@ const file = await files.resolvePath(['old folder', 'file.pdf']);
 
 file.on('modified', () => { console.log('file modified'); });
 ```
+
+### Logging
+
+Logging is available via  [log4js](https://www.npmjs.com/package/log4js) under the `MatrixFilesSDK` log category.
+
+For example, to enable trace level logging from the SDK:
+
+```ts
+import log4js from 'log4js';
+
+log4js.configure({
+  appenders: {
+    console: {
+      type: 'console',
+      layout: { type: 'coloured' },
+    },
+  },
+  categories: {
+    default: {
+      appenders: ['console'],
+      level: 'debug',
+    },
+    MatrixFilesSDK: {
+      appenders: ['console'],
+      level: 'trace',
+    },
+  },
+});
+```
