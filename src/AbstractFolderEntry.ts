@@ -51,10 +51,6 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
         return [];
     }
 
-    getPath() {
-        return this.path;
-    }
-
     abstract getChildren(): Promise<IEntry[]>;
 
     async getChildByName(name: string) {
@@ -75,7 +71,7 @@ export abstract class AbstractFolderEntry extends AutoBindingEmitter implements 
         if (!childId) {
             childId = await this.addChildFolder(first);
         } else if (!existingChild?.isFolder) {
-            throw new Error(`Not a folder: ${this.getPath()} => ${first}`);
+            throw new Error(`Not a folder: ${this.path} => ${first}`);
         }
 
         const folder = await this.getChildById(childId) as IFolderEntry | undefined;
