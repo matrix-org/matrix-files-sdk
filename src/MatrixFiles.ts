@@ -24,6 +24,7 @@ import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceEntry } from './TreeSpaceEntry';
 import promiseRetry from 'p-retry';
 import { IMatrixFiles } from './IMatrixFiles';
+import { IPendingEntry } from './IPendingEntry';
 
 export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     constructor(public client: MatrixClient) {
@@ -249,5 +250,32 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     private roomState(e: MatrixEvent, s: RoomState) {
         // TODO: don't emit events that are for sub folders
         this.emit('modified', this, e);
+    }
+
+    private pendingEntries: (IPendingEntry | IEntry)[] = [];
+
+    public addPendingEntry(entry: IPendingEntry | IEntry): void {
+        if ('replacesEntry' in entry && entry.replacesEntry) {
+            this.trace(
+                'addPendingEntry',
+                // eslint-disable-next-line max-len
+                `${entry.id} with parent ${entry.parent?.id} replaces ${entry.replacesEntry.id} for ${entry.path.join('/')}`,
+            );
+            this.clearPendingEntry(entry.replacesEntry);
+        } else {
+            this.trace('addPendingEntry', `${entry.id} with parent ${entry.parent?.id} for ${entry.path.join('/')}`);
+        }
+        this.pendingEntries.push(entry);
+    }
+
+    public clearPendingEntry(entry: IPendingEntry | IEntry): void {
+        this.trace('clearPendingEntry', entry.id);
+        this.pendingEntries = this.pendingEntries.filter(x => x.id !== entry.id);
+    }
+
+    public getPendingEntries(parent: IFolderEntry): (IPendingEntry | IEntry)[] {
+        const entries = this.pendingEntries.filter(x => x.parent?.id === parent.id);
+        this.trace('getPendingEntries', `${parent.id} = ${entries.length} of ${this.pendingEntries.length}`);
+        return entries;
     }
 }

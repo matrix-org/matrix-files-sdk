@@ -21,6 +21,7 @@ import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, Mat
 import { ArrayBufferBlob } from './ArrayBufferBlob';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
+import { PendingBranchEntry } from './PendingBranchEntry';
 
 export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     constructor(private files: MatrixFiles, public parent: TreeSpaceEntry, public branch: MSC3089Branch) {
@@ -149,7 +150,26 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async addVersion(file: ArrayBufferBlob, newName?: string): Promise<MatrixFilesID> {
-        this.trace('addVersion', `${this.path.join('/')} with name ${newName ?? this.name}`);
+        const name = newName ?? this.name;
+        this.trace('addVersion', `${this.path.join('/')} with name ${name}`);
+
+        // because adding a file/version is not atomic we add a placeholder pending entry to prevent concurrent adds:
+        const newEntry = new PendingBranchEntry(
+            this.files,
+            this.parent,
+            `(pending_version_for_${this.id}@${Date.now()})`,
+            name,
+            this,
+            file,
+            this.files.client.isRoomEncrypted(this.id) ? 'decrypted' : 'encryptionNotEnabled',
+            this.files.client.getUserId(),
+            {
+                ...this.branch.indexEvent.getContent(),
+                version: this.branch.version + 1,
+            },
+        );
+
+        this.files.addPendingEntry(newEntry);
 
         const {
             mimetype,
@@ -159,7 +179,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         const encrypted = await encryptAttachment(data);
 
         const { event_id: id } = await this.branch.createNewVersion(
-            newName ?? this.name,
+            name,
             Buffer.from(encrypted.data),
             encrypted.info,
             {
@@ -171,6 +191,9 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         );
 
         // TODO: ideally we would return the new IFileEntry
+
+        newEntry.setSent(id);
+
         return id;
     }
 
