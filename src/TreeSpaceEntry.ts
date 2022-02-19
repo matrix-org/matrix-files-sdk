@@ -25,17 +25,10 @@ import {
 import { BranchEntry } from './BranchEntry';
 import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceMembership } from './TreeSpaceMembership';
-import { log } from './log';
-
-function trace(type: string, message?: string) {
-    if (log.isTraceEnabled()) {
-        log.trace(`MatrixFiles.${type}()${message ? ` ${message}` : ''}`);
-    }
-}
 
 export class TreeSpaceEntry extends AbstractFolderEntry {
     constructor(private files: MatrixFiles, parent: IFolderEntry, public treespace: MSC3089TreeSpace) {
-        super(files.client, parent);
+        super(files.client, parent, `TreeSpaceEntry(${treespace.id})`);
         super.setEventHandlers({
             'Room.name': this.nameChanged,
             'Room.timeline': this.timelineChanged,
@@ -77,7 +70,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async addChildFolder(name: string): Promise<MatrixFilesID> {
-        trace(`addChildFolder() ${this.path.join('/')} with name ${name}`);
+        this.trace(`addChildFolder() ${this.path.join('/')} with name ${name}`);
         const d = await this.treespace.createDirectory(name);
         return d.id;
     }
@@ -97,23 +90,23 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async delete() {
-        trace('delete', this.path.join('/'));
+        this.trace('delete', this.path.join('/'));
         return this.treespace.delete();
     }
 
     async rename(name: string) {
-        trace('rename', `${this.path.join('/')} to ${name}`);
+        this.trace('rename', `${this.path.join('/')} to ${name}`);
         return this.treespace.setName(name);
     }
 
     async copyTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
-        trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
         // TODO: Implement this
         throw new Error('Not implemented');
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
-        trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
 
         // simple rename?
         if (resolvedParent.id === this.parent?.id) {
@@ -126,12 +119,13 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async addFile(name: string, file: ArrayBufferBlob): Promise <MatrixFilesID> {
-        trace('addFile', `${this.path.join('/')} with name ${name}`);
+        this.trace('addFile', `${this.path.join('/')} with name ${name}`);
         const existing = await this.getChildByName(name);
         if (existing && existing.isFolder) {
             throw new Error('A folder with that name already exists');
         }
         if (existing) {
+            this.trace('addFile', `Found existing entry for file: ${existing.id}`);
             const existingFile = existing as IFileEntry;
             await existingFile.addVersion(file);
             return existingFile.id;
