@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import type EventEmitter from 'events';
-import type { IEntry, ArrayBufferBlob } from '.';
+import type { IEntry, ArrayBufferBlob, MatrixFilesID } from '.';
 
 /**
  * Helper enum to represent the encryption status of the file.
@@ -42,7 +42,7 @@ export interface IFileEntry extends IEntry, EventEmitter {
      * @param fileTo The entry to add a version to.
      */
 
-    copyAsVersion(fileTo: IFileEntry): Promise<void>;
+    copyAsVersion(fileTo: IFileEntry): Promise<MatrixFilesID>;
 
     /**
      * Add a new version/revision to this file.
@@ -50,7 +50,7 @@ export interface IFileEntry extends IEntry, EventEmitter {
      * @param file The contents of the new version.
      * @param newName The new name for the file, or `undefined` if no change.
      */
-    addVersion(file: ArrayBufferBlob, newName?: string): Promise<void>;
+    addVersion(file: ArrayBufferBlob, newName?: string): Promise<MatrixFilesID>;
 
     /**
      * @returns The contents of the file in binary form.

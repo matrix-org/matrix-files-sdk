@@ -155,8 +155,9 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         return newFile;
     }
 
-    async addVersion(file: ArrayBufferBlob, newName?: string): Promise<void> {
+    async addVersion(file: ArrayBufferBlob, newName?: string): Promise<MatrixFilesID> {
         trace('addVersion', `${this.path.join('/')} with name ${newName ?? this.name}`);
+
         const {
             mimetype,
             size,
@@ -164,14 +165,20 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         } = file;
         const encrypted = await encryptAttachment(data);
 
-        return this.branch.createNewVersion(newName ?? this.name, Buffer.from(encrypted.data), encrypted.info, {
-            info: {
-                mimetype,
-                size,
+        const { event_id: id } = await this.branch.createNewVersion(
+            newName ?? this.name,
+            Buffer.from(encrypted.data),
+            encrypted.info,
+            {
+                info: {
+                    mimetype,
+                    size,
+                },
             },
-        });
+        );
 
         // TODO: ideally we would return the new IFileEntry
+        return id;
     }
 
     async getBlob(): Promise<ArrayBufferBlob> {
