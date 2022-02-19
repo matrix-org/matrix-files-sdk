@@ -21,8 +21,8 @@ import { IFolderMembership } from './IFolderMembership';
 import { ArrayBufferBlob } from './ArrayBufferBlob';
 
 export abstract class AbstractFolderEntry extends AutoBindingEmitter implements IFolderEntry {
-    constructor(client: MatrixClient, public parent: IFolderEntry | undefined) {
-        super(client);
+    constructor(client: MatrixClient, public parent: IFolderEntry | undefined, logName?: string) {
+        super(client, logName);
     }
     abstract addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID>;
     abstract id: string;

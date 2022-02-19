@@ -17,12 +17,21 @@ limitations under the License.
 import EventEmitter from 'events';
 import type { MatrixClient } from 'matrix-js-sdk/lib';
 
+import { log } from './log';
+
 /**
  * Wrapper to automatically bind and unbind to a shared MatrixClient depending on if anyone in turn has bound to us
  */
 export abstract class AutoBindingEmitter extends EventEmitter {
-    constructor(private matrixClient: MatrixClient) {
+    constructor(private matrixClient: MatrixClient, private logName?: string | (() => string)) {
         super();
+    }
+
+    protected trace(type: string, message?: string) {
+        if (log.isTraceEnabled()) {
+            const logName = typeof this.logName === 'function' ? this.logName() : this.logName;
+            log.trace(`${logName}.${type}()${message ? ` ${message}` : ''}`);
+        }
     }
 
     private eventHandlers: EventHandlers = {};

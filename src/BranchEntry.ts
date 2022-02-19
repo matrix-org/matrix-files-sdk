@@ -21,17 +21,10 @@ import type { MatrixFilesID, FileEncryptionStatus, IFileEntry, IFolderEntry, Mat
 import { ArrayBufferBlob } from './ArrayBufferBlob';
 import { AutoBindingEmitter } from './AutoBindingEmitter';
 import axios from 'axios';
-import { log } from './log';
-
-function trace(type: string, message?: string) {
-    if (log.isTraceEnabled()) {
-        log.trace(`BranchEntry.${type}()${message ? ` ${message}` : ''}`);
-    }
-}
 
 export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     constructor(private files: MatrixFiles, public parent: TreeSpaceEntry, public branch: MSC3089Branch) {
-        super(files.client);
+        super(files.client, `BranchEntry(${branch.id})`);
         super.setEventHandlers({ 'Room.timeline': this.timelineChanged });
     }
 
@@ -97,23 +90,23 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async delete() {
-        trace('delete', this.path.join('/'));
+        this.trace('delete', this.path.join('/'));
         return this.branch.delete();
     }
 
     async rename(name: string) {
-        trace('rename', `${this.path.join('/')} to ${name}`);
+        this.trace('rename', `${this.path.join('/')} to ${name}`);
         return this.branch.setName(name);
     }
 
     async copyAsVersion(fileTo: IFileEntry) {
-        trace('copyAsVersion', `${this.path.join('/')} to ${fileTo.path.join('/')}`);
+        this.trace('copyAsVersion', `${this.path.join('/')} to ${fileTo.path.join('/')}`);
         const blob = await this.getBlob();
         return fileTo.addVersion(blob);
     }
 
     async copyTo(resolvedParent: IFolderEntry, fileName: string): Promise<MatrixFilesID> {
-        trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
 
         const versions = await this.getVersionHistory();
         // process versions in order that they were created
@@ -142,7 +135,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
-        trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
 
         // simple rename?
         if (resolvedParent.id === this.parent.id) {
@@ -156,7 +149,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     async addVersion(file: ArrayBufferBlob, newName?: string): Promise<void> {
-        trace('addVersion', `${this.path.join('/')} with name ${newName ?? this.name}`);
+        this.trace('addVersion', `${this.path.join('/')} with name ${newName ?? this.name}`);
         const {
             mimetype,
             size,

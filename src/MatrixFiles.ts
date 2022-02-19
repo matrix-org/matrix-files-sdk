@@ -24,17 +24,10 @@ import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceEntry } from './TreeSpaceEntry';
 import promiseRetry from 'p-retry';
 import { IMatrixFiles } from './IMatrixFiles';
-import { log } from './log';
-
-function trace(type: string, message?: string) {
-    if (log.isTraceEnabled()) {
-        log.trace(`MatrixFiles.${type}()${message ? ` ${message}` : ''}`);
-    }
-}
 
 export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     constructor(public client: MatrixClient) {
-        super(client, undefined);
+        super(client, undefined, 'MatrixFiles');
         super.setEventHandlers({
             'Room': this.newRoom,
             'RoomState.events': this.roomState,
@@ -87,27 +80,27 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     }
 
     async delete() {
-        trace('delete', this.path.join('/'));
+        this.trace('delete', this.path.join('/'));
         throw new Error('Cannot remove root');
     }
 
     async rename(name: string) {
-        trace('rename', `${this.path.join('/')} to ${name}`);
+        this.trace('rename', `${this.path.join('/')} to ${name}`);
         throw new Error('Cannot rename root');
     }
 
     async copyTo(resolvedParent: IFolderEntry, fileName: string): Promise<MatrixFilesID> {
-        trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
         throw new Error('Cannot copy root');
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise<MatrixFilesID> {
-        trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
+        this.trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
         throw new Error('Cannot move root');
     }
 
     async addFile(name: string, file: ArrayBufferBlob): Promise<MatrixFilesID> {
-        trace('addFile', `${this.path.join('/')} with name ${name}`);
+        this.trace('addFile', `${this.path.join('/')} with name ${name}`);
         throw new Error('Cannot add file at root');
     }
 
@@ -146,12 +139,12 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     async resolvePath(path: string[]): Promise<IEntry | undefined> {
         const result = await this._resolvePath(path);
         const status = result ? (result.isFolder ? 'folder' : 'file') : 'not found';
-        trace('resolvePath', `${path.join('/')} was ${status}`);
+        this.trace('resolvePath', `${path.join('/')} was ${status}`);
         return result;
     }
 
     async sync(): Promise<void> {
-        trace('sync');
+        this.trace('sync');
         const opts: IStartClientOpts = {
             pendingEventOrdering: PendingEventOrdering.Detached,
             lazyLoadMembers: true,
@@ -173,13 +166,13 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     }
 
     async logout(): Promise<void> {
-        trace('logout');
+        this.trace('logout');
         await this.client.logout();
         this.client.stopClient();
     }
 
     async deactivate(erase = true): Promise<void> {
-        trace('deactivate');
+        this.trace('deactivate');
         this.client.stopClient();
         await this.client.deactivateAccount(undefined, erase);
     }
