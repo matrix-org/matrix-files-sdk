@@ -89,29 +89,55 @@ export class PendingBranchEntry extends AutoBindingEmitter implements IFileEntry
         return this.date;
     }
 
+    private async waitForRealEntry() {
+        this.trace('waitForRealEntry');
+        await this.sentPromise;
+        return this.files.getDescendantById(this.id);
+    }
+
     async delete() {
         this.trace('delete', this.path.join('/'));
-        throw new Error('Unable to delete pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to delete pending branch');
+        }
+        return real.delete();
     }
 
     async rename(name: string) {
         this.trace('rename', `${this.path.join('/')} to ${name}`);
-        throw new Error('Unable to rename pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to rename pending branch');
+        }
+        return real.rename(name);
     }
 
     async copyAsVersion(fileTo: IFileEntry): Promise<MatrixFilesID> {
         this.trace('copyAsVersion', `${this.path.join('/')} to ${fileTo.path.join('/')}`);
-        throw new Error('Unable to copy pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to copy pending branch');
+        }
+        return (real as IFileEntry).copyAsVersion(fileTo);
     }
 
     async copyTo(resolvedParent: IFolderEntry, fileName: string): Promise<MatrixFilesID> {
         this.trace('copyTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
-        throw new Error('Unable to copy pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to copy pending branch');
+        }
+        return this.copyTo(resolvedParent, fileName);
     }
 
     async moveTo(resolvedParent: IFolderEntry, fileName: string): Promise <MatrixFilesID> {
         this.trace('moveTo', `${this.path.join('/')} to ${resolvedParent.path.join('/')}/${fileName}`);
-        throw new Error('Unable to move pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to move pending branch');
+        }
+        return this.moveTo(resolvedParent, fileName);
     }
 
     private async createNewVersion(
@@ -209,6 +235,10 @@ export class PendingBranchEntry extends AutoBindingEmitter implements IFileEntry
     locked = false;
 
     async setLocked(locked: boolean): Promise<void> {
-        throw new Error('Unable to lock pending branch');
+        const real = await this.waitForRealEntry();
+        if (!real) {
+            throw new Error('Unable to lock pending branch');
+        }
+        return (real as IFileEntry).setLocked(locked);
     }
 }
