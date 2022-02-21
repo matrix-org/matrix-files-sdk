@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.0...v2.3.1) (2022-02-21)
+
+
+### Bug Fixes
+
+* added trace logging of event emitter ([f7e28a3](https://github.com/matrix-org/matrix-files-sdk/commit/f7e28a3cd6d719267266a3672fa00a86eb07cb24))
+
 # [2.3.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.2.0...v2.3.0) (2022-02-21)
 
 
