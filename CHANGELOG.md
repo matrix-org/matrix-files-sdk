@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.2.0...v2.3.0) (2022-02-21)
+
+
+### Features
+
+* improve trace logging to include entity ID ([64a2c8b](https://github.com/matrix-org/matrix-files-sdk/commit/64a2c8be2cafc7fd8193adacd86e19ec2e3c6d04))
+
 # [2.2.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.1...v2.2.0) (2022-02-18)
 
 
