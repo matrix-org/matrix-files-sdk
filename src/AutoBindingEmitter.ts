@@ -52,6 +52,8 @@ export abstract class AutoBindingEmitter extends EventEmitter {
     private autobind() {
         if (this.eventNames().length > 0) {
             if (!this.bound) {
+                // eslint-disable-next-line max-len
+                this.trace('autobind', `Binding ${Object.values(this.eventHandlers).length} handlers: ${Object.keys(this.eventHandlers)}`);
                 for (const e in this.eventHandlers) {
                     this.matrixClient.on(e, this.eventHandlers[e]);
                 }
@@ -59,6 +61,8 @@ export abstract class AutoBindingEmitter extends EventEmitter {
             }
         } else {
             if (this.bound) {
+                // eslint-disable-next-line max-len
+                this.trace('autobind', `Unbinding ${Object.values(this.eventHandlers).length} handlers: ${Object.keys(this.eventHandlers)}`);
                 for (const e in this.eventHandlers) {
                     this.matrixClient.off(e, this.eventHandlers[e]);
                 }
