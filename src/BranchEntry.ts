@@ -203,6 +203,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
     }
 
     timelineChanged(e: MatrixEvent, r: Room) {
+        this.trace('event(timelineChanged)', `room ${r.roomId} type ${e.getType()}`);
         if (r.roomId === this.parent.id && e.replacingEventId() === this.id) {
             this.emit('modified', this, e);
             this.parent.emit('modified', this, e);
