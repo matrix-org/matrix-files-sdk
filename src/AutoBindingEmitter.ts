@@ -52,6 +52,8 @@ export abstract class AutoBindingEmitter extends EventEmitter {
     private autobind() {
         if (this.eventNames().length > 0) {
             if (!this.bound) {
+                // eslint-disable-next-line max-len
+                this.trace('autobind', `Binding ${Object.values(this.eventHandlers).length} handlers: ${Object.keys(this.eventHandlers)}`);
                 for (const e in this.eventHandlers) {
                     this.matrixClient.on(e, this.eventHandlers[e]);
                 }
@@ -59,6 +61,8 @@ export abstract class AutoBindingEmitter extends EventEmitter {
             }
         } else {
             if (this.bound) {
+                // eslint-disable-next-line max-len
+                this.trace('autobind', `Unbinding ${Object.values(this.eventHandlers).length} handlers: ${Object.keys(this.eventHandlers)}`);
                 for (const e in this.eventHandlers) {
                     this.matrixClient.off(e, this.eventHandlers[e]);
                 }
@@ -68,51 +72,64 @@ export abstract class AutoBindingEmitter extends EventEmitter {
     }
 
     addListener(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('addListener', event.toString());
         super.addListener(event, listener);
         this.autobind();
         return this;
     }
 
     on(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('on', event.toString());
         super.on(event, listener);
         this.autobind();
         return this;
     }
 
     once(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('once', event.toString());
         super.once(event, listener);
         this.autobind();
         return this;
     }
 
     removeListener(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('removeListener', event.toString());
         super.removeListener(event, listener);
         this.autobind();
         return this;
     }
 
     off(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('off', event.toString());
         super.off(event, listener);
         this.autobind();
         return this;
     }
 
     removeAllListeners(event?: string | symbol): this {
+        this.trace('removeAllListeners', event?.toString());
         super.removeAllListeners(event);
         this.autobind();
         return this;
     }
 
     prependListener(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('prependListener', event.toString());
         super.prependListener(event, listener);
         this.autobind();
         return this;
     }
 
     prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this {
+        this.trace('prependOnceListener', event.toString());
         super.prependOnceListener(event, listener);
         this.autobind();
         return this;
+    }
+
+    emit(event: string | symbol, ...args: any[]): boolean {
+        this.trace('emit', event.toString());
+        return super.emit(event, ...args);
     }
 }
 

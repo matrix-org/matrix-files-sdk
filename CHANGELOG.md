@@ -1,3 +1,31 @@
+## [2.3.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.1...v2.3.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* more event logging ([5c3abeb](https://github.com/matrix-org/matrix-files-sdk/commit/5c3abebf86221c936ff55cce12f8fcf3e03d6691))
+
+## [2.3.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.0...v2.3.1) (2022-02-21)
+
+
+### Bug Fixes
+
+* added trace logging of event emitter ([f7e28a3](https://github.com/matrix-org/matrix-files-sdk/commit/f7e28a3cd6d719267266a3672fa00a86eb07cb24))
+
+# [2.3.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.2.0...v2.3.0) (2022-02-21)
+
+
+### Features
+
+* improve trace logging to include entity ID ([64a2c8b](https://github.com/matrix-org/matrix-files-sdk/commit/64a2c8be2cafc7fd8193adacd86e19ec2e3c6d04))
+
+# [2.2.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.1...v2.2.0) (2022-02-18)
+
+
+### Features
+
+* add logging support via log4js ([a52e43a](https://github.com/matrix-org/matrix-files-sdk/commit/a52e43ace6a60cde1da2cbfcae5046d52c68978f))
+
 ## [2.1.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.1.0...v2.1.1) (2022-02-14)
 
 

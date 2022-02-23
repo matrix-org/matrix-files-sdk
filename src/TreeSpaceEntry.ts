@@ -238,6 +238,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     nameChanged(r: Room) {
+        this.trace('event(nameChanged)', `room ${r.roomId} to ${r.name}`);
         if (r.roomId === this.id) {
             this.emitModified(r);
         } else {
@@ -250,6 +251,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     timelineChanged(e: MatrixEvent, r: Room) {
+        this.trace('event(timelineChanged)', `room ${r.roomId} type ${e.getType()}`);
         if (r.roomId === this.id && e.getType() === UNSTABLE_MSC3089_BRANCH.name) {
             // look for new branch entry
             this.emitModified(e);
@@ -257,6 +259,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     roomState(e: MatrixEvent, s: RoomState) {
+        this.trace('event(roomState)', `room ${s.roomId} type ${e.getType()}`);
         // new child:
         if (s.roomId === this.id && e.getType() === EventType.SpaceChild) {
             this.emitModified(e);
