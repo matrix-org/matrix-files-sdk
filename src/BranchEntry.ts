@@ -157,7 +157,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
         } = file;
         const encrypted = await encryptAttachment(data);
 
-        return this.branch.createNewVersion(newName ?? this.name, Buffer.from(encrypted.data), encrypted.info, {
+        await this.branch.createNewVersion(newName ?? this.name, Buffer.from(encrypted.data), encrypted.info, {
             info: {
                 mimetype,
                 size,
