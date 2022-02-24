@@ -57,12 +57,12 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-matrix-org": "github:matrix-org/eslint-plugin-matrix-org",
     "husky": "^7.0.4",
-    "matrix-js-sdk": "^15.4.0",
+    "matrix-js-sdk": "^15.6.0-rc.1",
     "semantic-release": "^19.0.2",
     "typescript": "^4.4.4"
   },
   "peerDependencies": {
-    "matrix-js-sdk": "^15.4.0"
+    "matrix-js-sdk": "^15.6.0-rc.1"
   },
   "engines": {
     "node": ">=12.0"
