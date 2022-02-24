@@ -25,6 +25,7 @@ import {
 import { BranchEntry } from './BranchEntry';
 import { AbstractFolderEntry } from './AbstractFolderEntry';
 import { TreeSpaceMembership } from './TreeSpaceMembership';
+import { PendingBranchEntry } from './PendingBranchEntry';
 
 export class TreeSpaceEntry extends AbstractFolderEntry {
     constructor(private files: MatrixFiles, parent: IFolderEntry, public treespace: MSC3089TreeSpace) {
@@ -55,10 +56,28 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     async getChildren(): Promise<IEntry[]> {
-        return await Promise.resolve([
+        let children: IEntry[] = await Promise.resolve([
             ...this.treespace.getDirectories().map(d => new TreeSpaceEntry(this.files, this, d)),
             ...this.treespace.listFiles().map(f => new BranchEntry(this.files, this, f)),
         ]);
+        const pending = this.files.getPendingEntries(this);
+
+        // adding pending if not already present
+        pending.forEach((p) => {
+            if (!children.find(c => c.id === p.id)) {
+                children.push(p);
+                // if this pending entry replaces a previous one then remove the previous one from the list
+                if ('replacesEntry' in p) {
+                    if (p.replacesEntry) {
+                        children = children.filter(x => x.id !== p.replacesEntry?.id);
+                    }
+                }
+            } else {
+                this.files.clearPendingEntry(p);
+            }
+        });
+
+        return children;
     }
 
     async getChildByName(name: string): Promise<IEntry | undefined> {
@@ -72,6 +91,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     async addChildFolder(name: string): Promise<MatrixFilesID> {
         this.trace(`addChildFolder() ${this.path.join('/')} with name ${name}`);
         const d = await this.treespace.createDirectory(name);
+        this.files.addPendingEntry(new TreeSpaceEntry(this.files, this, d));
         return d.id;
     }
 
@@ -131,6 +151,25 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
             return existingFile.id;
         }
 
+        // because adding a file/version is not atomic we add a placeholder pending entry to prevent concurrent adds:
+        const newEntry = new PendingBranchEntry(
+            this.files,
+            this,
+            `(pending_file_for_${this.id}@${Date.now()})`,
+            name,
+            undefined,
+            file,
+            this.files.client.isRoomEncrypted(this.id) ? 'decrypted' : 'encryptionNotEnabled',
+            this.files.client.getUserId(),
+            { // TODO: this is a hack and really we should get directory.createFile() to return the index event content for caching
+                name,
+                active: true,
+                version: 1,
+            },
+        );
+
+        this.files.addPendingEntry(newEntry);
+
         const directory = this.treespace;
 
         const {
@@ -149,6 +188,8 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
                 size,
             },
         });
+
+        newEntry.setSent(id);
 
         return id;
     }
