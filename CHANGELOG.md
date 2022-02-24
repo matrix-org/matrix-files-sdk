@@ -1,3 +1,17 @@
+# [2.4.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.2...v2.4.0) (2022-02-24)
+
+
+### Bug Fixes
+
+* support waiting for sent/real event from PendingBranchEvent ([c172413](https://github.com/matrix-org/matrix-files-sdk/commit/c172413377a2e653d503737fc0b82784c3aa22d2))
+
+
+### Features
+
+* improve trace logging to include entity ID ([22d2699](https://github.com/matrix-org/matrix-files-sdk/commit/22d2699d9a6523b13b3f82d65325d0e74059ed35))
+* keep tracking of pending IFileEntries and return them in IFolder.getChildren() ([2372d1c](https://github.com/matrix-org/matrix-files-sdk/commit/2372d1c6ddb20ef1a39ab2f30dedaea1c8200d39))
+* return ID from IFileEntry.addVersion() and .copyAsVersion() ([39ea089](https://github.com/matrix-org/matrix-files-sdk/commit/39ea089fcb9e4f3d81cbe1347011bbbe516573dc))
+
 ## [2.3.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.1...v2.3.2) (2022-02-23)
 
 
