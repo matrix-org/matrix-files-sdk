@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.0...v2.4.1) (2022-02-28)
+
+
+### Bug Fixes
+
+* emit modified event when room/folder is left or deleted ([baac1bd](https://github.com/matrix-org/matrix-files-sdk/commit/baac1bd45f110a21017b6e49e3d739bf2dfc4224))
+
 # [2.4.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.3.2...v2.4.0) (2022-02-24)
 
 
