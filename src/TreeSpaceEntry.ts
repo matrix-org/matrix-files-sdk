@@ -111,7 +111,8 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
 
     async delete() {
         this.trace('delete', this.path.join('/'));
-        return this.treespace.delete();
+        await this.treespace.delete();
+        this.emitModified(this.treespace.room);
     }
 
     async rename(name: string) {

@@ -32,6 +32,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
         super.setEventHandlers({
             'Room': this.newRoom,
             'RoomState.events': this.roomState,
+            'Room.myMembership': this.roomMyMembership,
         });
     }
 
@@ -250,6 +251,13 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     private roomState(e: MatrixEvent, s: RoomState) {
         // TODO: don't emit events that are for sub folders
         this.emit('modified', this, e);
+    }
+
+    private roomMyMembership(r: Room, membership: string, prevMembership: string) {
+        // TODO: don't emit events that are for sub folders?
+        if (membership === 'leave') {
+            this.emit('modified', this, r);
+        }
     }
 
     private pendingEntries: (IPendingEntry | IEntry)[] = [];
