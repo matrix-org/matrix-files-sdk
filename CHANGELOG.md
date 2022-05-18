@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.1...v2.4.2) (2022-05-18)
+
+
+### Bug Fixes
+
+* use release version of matrix-js-sdk not RC ([10e4fb9](https://github.com/matrix-org/matrix-files-sdk/commit/10e4fb9ac6d373153d38b2c5135461b183dc5796))
+
 ## [2.4.1](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.0...v2.4.1) (2022-02-28)
 
 
