@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.2...v2.5.0) (2022-11-14)
+
+
+### Features
+
+* upgrade js-sdk to known secure version ([ca396ee](https://github.com/matrix-org/matrix-files-sdk/commit/ca396eecb9d000b666fa72fadb55c0b7faad03f6))
+
 ## [2.4.2](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.1...v2.4.2) (2022-05-18)
 
 
