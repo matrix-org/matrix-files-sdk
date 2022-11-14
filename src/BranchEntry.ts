@@ -162,7 +162,7 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
             this,
             file,
             this.files.client.isRoomEncrypted(this.id) ? 'decrypted' : 'encryptionNotEnabled',
-            this.files.client.getUserId(),
+            this.files.client.getUserId()!,
             {
                 ...this.branch.indexEvent.getContent(),
                 version: this.branch.version + 1,

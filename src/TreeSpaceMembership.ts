@@ -36,7 +36,7 @@ export class TreeSpaceMembership extends EventEmitter implements IFolderMembersh
     since = new Date(); // FIXME implement this
 
     get canInvite() {
-        return this.treespace.room.canInvite(this.files.getClient().getUserId());
+        return this.treespace.room.canInvite(this.files.getClient().getUserId()!);
     }
 
     get canRemove() {
@@ -46,7 +46,7 @@ export class TreeSpaceMembership extends EventEmitter implements IFolderMembersh
 
     get canManageRoles() {
         return this.treespace.room.currentState.maySendStateEvent(
-            EventType.RoomPowerLevels, this.files.getClient().getUserId());
+            EventType.RoomPowerLevels, this.files.getClient().getUserId()!);
     }
 
     get canWrite() {

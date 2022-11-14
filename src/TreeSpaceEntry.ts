@@ -161,7 +161,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
             undefined,
             file,
             this.files.client.isRoomEncrypted(this.id) ? 'decrypted' : 'encryptionNotEnabled',
-            this.files.client.getUserId(),
+            this.files.client.getUserId()!,
             { // TODO: this is a hack and really we should get directory.createFile() to return the index event content for caching
                 name,
                 active: true,
@@ -227,7 +227,7 @@ export class TreeSpaceEntry extends AbstractFolderEntry {
     }
 
     get ownMembership(): IFolderMembership {
-        return this.getMembership(this.files.getClient().getUserId());
+        return this.getMembership(this.files.getClient().getUserId()!);
     }
 
     private emitModified(e: MatrixEvent | Room) {

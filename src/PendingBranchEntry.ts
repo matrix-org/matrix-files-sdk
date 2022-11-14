@@ -190,7 +190,7 @@ export class PendingBranchEntry extends AutoBindingEmitter implements IFileEntry
             this,
             file,
             this.files.client.isRoomEncrypted(this.id) ? 'decrypted' : 'encryptionNotEnabled',
-            this.files.client.getUserId(),
+            this.files.client.getUserId()!,
             {
                 ...this.indexEventContent,
                 version: this.version + 1,

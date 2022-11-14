@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 import { IStartClientOpts, MatrixClient, MatrixEvent, Room, RoomState } from 'matrix-js-sdk/lib';
-import { PendingEventOrdering } from 'matrix-js-sdk/lib/client';
+import { ClientEvent, PendingEventOrdering } from 'matrix-js-sdk/lib/client';
 import { simpleRetryOperation } from 'matrix-js-sdk/lib/utils';
 import { EventType, UNSTABLE_MSC3089_TREE_SUBTYPE } from 'matrix-js-sdk/lib/@types/event';
 import { SyncState } from 'matrix-js-sdk/lib/sync';
@@ -37,7 +37,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
     }
 
     get id(): MatrixFilesID {
-        return this.client.getUserId();
+        return this.client.getUserId() ?? '';
     }
 
     isFolder = true;
@@ -156,13 +156,13 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
 
         // We delay the ready state until after the first sync has completed
         const readyPromise = new Promise <void>((resolve) => {
-            const fn = (newState: SyncState, oldState: SyncState) => {
+            const fn = (newState: SyncState, oldState?: SyncState) => {
                 if (newState === SyncState.Syncing && oldState === SyncState.Prepared) {
                     resolve();
-                    this.client.off('sync', fn.bind(this));
+                    this.client.off(ClientEvent.Sync, fn.bind(this));
                 }
             };
-            this.client.on('sync', fn.bind(this));
+            this.client.on(ClientEvent.Sync, fn.bind(this));
         });
         return this.client.startClient(opts).then(async () => readyPromise);
     }
