@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.5.0...v3.0.0) (2022-12-08)
+
+
+### Features
+
+* upgrade to matrix-js-sdk v22 ([165d3ac](https://github.com/matrix-org/matrix-files-sdk/commit/165d3ac578a8891c62e4bc8084e56b982b4a9ba8))
+
+
+### BREAKING CHANGES
+
+* requires Node.js >= 16
+
 # [2.5.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.4.2...v2.5.0) (2022-11-14)
 
 
