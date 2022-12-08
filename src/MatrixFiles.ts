@@ -156,7 +156,7 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
 
         // We delay the ready state until after the first sync has completed
         const readyPromise = new Promise <void>((resolve) => {
-            const fn = (newState: SyncState, oldState?: SyncState) => {
+            const fn = (newState: SyncState, oldState: SyncState | null) => {
                 if (newState === SyncState.Syncing && oldState === SyncState.Prepared) {
                     resolve();
                     this.client.off(ClientEvent.Sync, fn.bind(this));
@@ -199,9 +199,9 @@ export class MatrixFiles extends AbstractFolderEntry implements IMatrixFiles {
 
     private async retryJoin(room: Room): Promise <Room> {
         return simpleRetryOperation(async () => {
-            return this.client.joinRoom(room.roomId, {
-                viaServers: [this.client.getDomain()],
-            }).catch(e => {
+            const domain = this.client.getDomain();
+            const opts = domain ? { viaServers: [domain] } : {};
+            return this.client.joinRoom(room.roomId, opts).catch(e => {
                 if (e?.errcode === 'M_FORBIDDEN') {
                     throw new promiseRetry.AbortError(e);
                 }

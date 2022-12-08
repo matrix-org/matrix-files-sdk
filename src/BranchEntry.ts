@@ -53,7 +53,8 @@ export class BranchEntry extends AutoBindingEmitter implements IFileEntry {
             if (replacingEventId) {
                 childEvent = this.parent.treespace.room.findEventById(replacingEventId);
                 if (childEvent) {
-                    const childBranch = this.parent.treespace.getFile(childEvent.getId());
+                    const childId = childEvent.getId();
+                    const childBranch = childId ? this.parent.treespace.getFile(childId) : undefined;
                     if (childBranch) {
                         versions.push(new BranchEntry(this.files, this.parent, childBranch!));
                         parentEvent = childEvent;

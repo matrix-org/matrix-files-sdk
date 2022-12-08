@@ -41,7 +41,7 @@ export class TreeSpaceMembership extends EventEmitter implements IFolderMembersh
 
     get canRemove() {
         return this.treespace.room.currentState.getStateEvents(
-            EventType.RoomPowerLevels, '').getContent().kick <= this.roomMember.powerLevel ?? 0;
+            EventType.RoomPowerLevels, '')?.getContent().kick <= (this.roomMember.powerLevel ?? 0);
     }
 
     get canManageRoles() {
