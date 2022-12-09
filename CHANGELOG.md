@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/matrix-org/matrix-files-sdk/compare/v3.0.0...v3.0.1) (2022-12-09)
+
+
+### Bug Fixes
+
+* **deps:** update qs to non-vulnerable version ([393e815](https://github.com/matrix-org/matrix-files-sdk/commit/393e815f508908e8d1cc3755bbb698e56c1998fa))
+
 # [3.0.0](https://github.com/matrix-org/matrix-files-sdk/compare/v2.5.0...v3.0.0) (2022-12-08)
 
 
