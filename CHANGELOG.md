@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v3.0.1...v3.0.2) (2023-03-30)
+
+
+### Bug Fixes
+
+* **deps:** bump matrix-js-sdk from 22.0.0 to 24.0.0 ([#16](https://github.com/matrix-org/matrix-files-sdk/issues/16)) ([d433cb9](https://github.com/matrix-org/matrix-files-sdk/commit/d433cb90208928ab1aac9562d3d16c541136879d))
+
 ## [3.0.1](https://github.com/matrix-org/matrix-files-sdk/compare/v3.0.0...v3.0.1) (2022-12-09)
 
 
