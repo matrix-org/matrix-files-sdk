@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/matrix-org/matrix-files-sdk/compare/v3.0.2...v3.1.0) (2023-11-29)
+
+
+### Features
+
+* update matrix-js-sdk from v24 to v30 ([4f55110](https://github.com/matrix-org/matrix-files-sdk/commit/4f551100265a0f768ab0efdee712bb6548bb695f))
+
 ## [3.0.2](https://github.com/matrix-org/matrix-files-sdk/compare/v3.0.1...v3.0.2) (2023-03-30)
 
 
